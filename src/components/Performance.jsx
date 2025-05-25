@@ -17,7 +17,7 @@ export default function Performance() {
             </div>
 
             <div className="bg-black outline-2 outline-[#939393]/40 p-[30px] grid grid-cols-3 gap-[20px] w-[75%] rounded-[10px]">
-                <div className="flex flex-row gap-[5px] items-center justify-between border-r-2 border-[#939393]">
+                <div className="flex flex-row gap-[5px] items-center justify-center border-r-2 border-[#939393]">
                     <div className="flex flex-col items-center justify-center gap-[10px]">
                         <Image src="/percentage.png" alt="/reload" width={50} height={50} quality={100} />
                         <p className="text-white text-[clamp(1.1rem,2.2vw,2.2rem)]">255%</p>
