@@ -24,9 +24,9 @@ export default function Hero() {
                 {/* Content Over Video */}
                 <div className="relative z-10 text-white px-6 bg-gradient-to-r from-black to-transparent h-full w-full flex items-center justify-start pt-[80px]">
                     <div className="flex-row md:mx-[80px]">
-                        <div className={`text-[clamp(2rem,3.6vw,3.6rem)] font-normal drop-shadow-lg text-start ${oswa.className}`}>
-                            <p className="bg-gradient-to-r from-white to-[#464646] bg-clip-text text-transparent">AI ISN'T THE FUTURE - IT IS THE</p>
-                            <p className="bg-gradient-to-r from-white to-[#464646] bg-clip-text text-transparent">ENGINE OF YOUR BUSINESS</p>
+                        <div className={`text-[clamp(2rem,3.6vw,3.6rem)] font-normal text-white drop-shadow-lg text-start ${oswa.className}`}>
+                            <p>AI ISN'T THE FUTURE - IT IS THE</p>
+                            <p className="mt-[-26px]">ENGINE OF YOUR BUSINESS</p>
                         </div>
                         <p className={`mt-4 max-w-2xl text-[clamp(1rem,1.4vw,1.5rem)] drop-shadow-md ${sans.className} text-[#828282]`}>
                             Axolotron empowers enterprises to enhance operational efficiency, reduce expenditures, and consistently exceed customer expectations
