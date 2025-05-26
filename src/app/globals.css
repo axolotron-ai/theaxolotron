@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .bg-grid-inch {
+    background-image: 
+      linear-gradient(to right, #9393931A 1px, transparent 1px),
+      linear-gradient(to bottom, #9393931A 1px, transparent 1px);
+    background-size: 1in 1in;
+    background-color: #151515;
+  }
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

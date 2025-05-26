@@ -17,7 +17,6 @@ export default function Products() {
         { srcVideo: "/healthcare.mp4", srcPic: "/healthcare_pic.jpg", name: "Healthcare" },
         { srcVideo: "/ecommerce.mp4", srcPic: "/ecommerce_pic.jpg", name: "Ecommerce" },
         { srcVideo: "/logistics.mp4", srcPic: "/logistics_pic.jpg", name: "Logistics" },
-        { srcVideo: "/fintech.mp4", srcPic: "/fintech_pic.jpg", name: "Fintech" },
     ];
 
     return (
@@ -27,18 +26,17 @@ export default function Products() {
                 <p className="text-[#939393] text-[clamp(0.8rem,1.5vw,2rem)]">Redefining industries with the power of AI.</p>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-5 px-4">
+            <div className="flex flex-wrap justify-center gap-10 px-4">
                 {value.map((val, index) => {
                     const isHovered = hoveredIndex === index;
 
                     return (
                         <div
                             key={index}
-                            className="relative h-[550px] w-[300px] outline-2 outline-[#939393] rounded-[15px] overflow-hidden cursor-pointer"
+                            className="relative h-[500px] w-[280px] outline-2 outline-[#939393] rounded-[15px] overflow-hidden cursor-pointer"
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
                         >
-                            {/* Video layer (always rendered) */}
                             <motion.video
                                 src={val.srcVideo}
                                 autoPlay
@@ -51,7 +49,6 @@ export default function Products() {
                                 transition={{ duration: 0.5 }}
                             />
 
-                            {/* Image layer (always rendered) */}
                             <motion.div
                                 className="absolute h-full w-full"
                                 initial={false}
@@ -66,10 +63,8 @@ export default function Products() {
                                 />
                             </motion.div>
 
-                            {/* Overlay gradient */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
 
-                            {/* Text + button */}
                             <motion.div
                                 className="absolute bottom-[-20px] w-full flex flex-col items-center z-20"
                                 initial={false}
