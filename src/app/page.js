@@ -5,6 +5,7 @@ import Performance from "@/components/Performance";
 import Products from "@/components/Products";
 import Casestudies from "@/components/Casestudies";
 import Team from "@/components/Team";
+import Contact from "@/components/Contact";
 
 export default function Home() {
     return (
@@ -15,6 +16,7 @@ export default function Home() {
             <Products />
             <Casestudies />
             <Team />
+            <Contact />
         </>
     );
-}
+};
