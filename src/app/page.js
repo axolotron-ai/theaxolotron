@@ -16,7 +16,6 @@ export default function Home() {
             <Products />
             <Casestudies />
             <Team />
-            <Contact />
         </>
     );
 };
