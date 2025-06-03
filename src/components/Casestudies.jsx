@@ -35,7 +35,7 @@ export default function Casestudies() {
                             <button className="bg-white px-[30px] text-black py-[8px] rounded-[7px] cursor-pointer w-fit mt-[5px] font-semibold">Read more</button>
                         </div>
                     </div>
-                    <div className="flex flex-wrap space-x-[55px] justify-evenly">
+                    <div className="flex flex-row space-x-[55px] justify-evenly">
                         <div className="grid grid-rows-2 gap-[2.5%] h-[600px] w-[80%]">
                             <Image src="/casestudies_02.jpg" alt="/reload" height={400} width={350} quality={100} className="rounded-[7px] overflow-hidden h-[300px] w-[80%] object-cover" />
                             <div className="flex flex-col gap-[10px] w-[550px]">
