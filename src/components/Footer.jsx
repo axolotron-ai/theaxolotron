@@ -14,7 +14,7 @@ export default function Footer() {
                     <p className="text-[clamp(1.5rem,1.8vw,2.25rem)]">Axolotron</p>
                     <p className="text-white/50 text-[clamp(1rem,1.25vw,2rem)]">AI products that define evolution</p>
                 </a>
-                <div className="flex flex-col sm:flex-row justify-evenly gap-[15%]">
+                <div className="flex flex-col sm:flex-row justify-evenly gap-[15%] w-[50%]">
                     <div>
                         <p className="text-[clamp(1rem,1.25vw,2rem)]">Socials</p>
                     </div>
