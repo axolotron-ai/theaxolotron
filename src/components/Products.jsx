@@ -21,12 +21,12 @@ export default function Products() {
 
     return (
         <div className="flex flex-col items-center justify-center space-y-4 bg-black">
-            <div className={`${lato.className} text-center py-[30px]`}>
-                <p className="text-[clamp(1rem,2.5vw,3rem)] font-semibold text-white">Our products</p>
-                <p className="text-[#939393] text-[clamp(0.8rem,1.5vw,2rem)]">Redefining industries with the power of AI.</p>
+            <div className={`${lato.className} text-center py-[50px]`}>
+                <p className="text-[clamp(1.5rem,2.5vw,3rem)] font-semibold text-white">Our products</p>
+                <p className="text-[#939393] text-[clamp(1.1rem,1.5vw,2rem)]">Redefining industries with the power of AI.</p>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-10 px-4">
+            <div className="flex flex-wrap justify-evenly gap-10 px-4 w-full">
                 {value.map((val, index) => {
                     const isHovered = hoveredIndex === index;
 
@@ -56,10 +56,13 @@ export default function Products() {
                                 transition={{ duration: 0.5 }}
                             >
                                 <Image
+                                    priority
                                     src={val.srcPic}
                                     alt={val.name}
                                     fill
-                                    className="object-cover"
+                                    quality={100}
+                                    sizes="280px"
+                                    className="object-cover h-auto w-auto"
                                 />
                             </motion.div>
 
@@ -74,6 +77,7 @@ export default function Products() {
                                 <p className="text-white text-[32px] font-semibold">{val.name}</p>
 
                                 <motion.button
+                                    whileTap={{ scale: 0.90 }}
                                     initial={false}
                                     animate={{ opacity: isHovered ? 1 : 0 }}
                                     transition={{ duration: 0.4 }}
@@ -87,7 +91,7 @@ export default function Products() {
                 })}
             </div>
 
-            <motion.button className="bg-white font-semibold px-[30px] py-[15px] flex items-center justify-center my-[40px] cursor-pointer text-[18px] rounded-[7px]">Explore All</motion.button>
+            <motion.button whileTap={{ scale: 0.95 }} className="bg-white font-semibold px-[30px] py-[15px] flex items-center justify-center my-[60px] cursor-pointer text-[18px] rounded-[7px]">Explore All</motion.button>
         </div>
     );
 }

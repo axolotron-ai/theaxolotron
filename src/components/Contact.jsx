@@ -1,4 +1,8 @@
+"use client";
+import { updateData } from "@/db/CRUD";
 import { Prompt } from "next/font/google";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 const prompt = Prompt({
     subsets: ['latin'],
@@ -7,31 +11,40 @@ const prompt = Prompt({
 });
 
 export default function Contact() {
-    return (
-        <div className={prompt.className}>
-            <p>Contact us</p>
 
-            <div>
-                <p>AI doesn't wait, and neither should your business.</p>
-                <input placeholder="Name" />
-                <input placeholder="Organization Name" />
-                <input placeholder="Email Address" />
-                <button>Send</button>
+    const [name, setName] = useState("");
+    const [orgName, setOrgName] = useState("");
+    const [email, setEmail] = useState("");
+
+    return (
+        <div className={`${prompt.className} flex flex-wrap gap-[50px] items-center justify-between px-[50px] md:px-[100px] py-[70px] bg-black text-white`}>
+            <div className="flex flex-col gap-[30px] ">
+                <div>
+                    <p className="text-[clamp(2rem,2.5vw,3rem)]">Contact us</p>
+                    <p className="text-white/40 text-[clamp(1rem,1.25vw,2rem)]">AI doesn't wait, and neither should your business.</p>
+                </div>
+
+                <div className="flex flex-col gap-[35px]">
+                    <input placeholder="Name" onChange={(e) => setName(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <input placeholder="Organization Name" onChange={(e) => setOrgName(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <input placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <motion.button whileTap={{ scale: 0.95 }} onClick={() => updateData(name, orgName, email)} className="bg-white px-[50px] py-[8px] rounded-[5px] cursor-pointer w-fit text-black">Send</motion.button>
+                </div>
             </div>
 
-            <div>
+            <div className="flex flex-col gap-[30px] w-[400px]">
                 <div>
-                    <p>Phone no</p>
-                    <p>91+8248916635</p>
-                    <p>91+6382714477</p>
+                    <p className="text-[clamp(1rem,1.25vw,2rem)]">Phone no</p>
+                    <p className="text-white/40">91+8248916635</p>
+                    <p className="text-white/40">91+6382714477</p>
                 </div>
                 <div>
-                    <p>Email Address</p>
-                    <p>axolotron.ai@gmail.com</p>
+                    <p className="text-[clamp(1rem,1.25vw,2rem)]">Email Address</p>
+                    <p className="text-white/40">axolotron.ai@gmail.com</p>
                 </div>
                 <div>
-                    <p>Address</p>
-                    <p>eu ipsum eget dignissim pellentesque in posuere placerat commodo tempor ac faucibus dolor id feugiat nulla.</p>
+                    <p className="text-[clamp(1rem,1.25vw,2rem)]">Address</p>
+                    <p className="text-white/40">eu ipsum eget dignissim pellentesque in posuere placerat commodo tempor ac faucibus dolor id feugiat nulla.</p>
                 </div>
             </div>
         </div>
