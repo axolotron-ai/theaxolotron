@@ -9,12 +9,12 @@ const text = MuseoModerno({
 export default function Footer() {
     return (
         <>
-            <div className={`${text.className} h-[350px] bg-[#141414] flex flex-wrap items-center justify-between px-[50px] md:px-[100px] text-white`}>
+            <div className={`${text.className} h-full bg-[#141414] flex flex-wrap items-center justify-between py-[50px] px-[50px] md:px-[100px] text-white gap-[15px]`}>
                 <a href="/" className="sm:mb-[70px]">
                     <p className="text-[clamp(1.5rem,1.8vw,2.25rem)]">Axolotron</p>
                     <p className="text-white/50 text-[clamp(1rem,1.25vw,2rem)]">AI products that define evolution</p>
                 </a>
-                <div className="flex flex-row justify-evenly gap-[15%] w-[50%]">
+                <div className="flex flex-col sm:flex-row justify-evenly gap-[15%]">
                     <div>
                         <p className="text-[clamp(1rem,1.25vw,2rem)]">Socials</p>
                     </div>
@@ -24,7 +24,7 @@ export default function Footer() {
                         <p className="text-white/50">E-commerce</p>
                         <p className="text-white/50">Logistics</p>
                     </div>
-                    <div className="flex flex-col justify-evenly gap-[8px]">
+                    <div className="flex flex-col justify-evenly gap-[7px]">
                         <p className="text-[clamp(1rem,1.25vw,2rem)]">Contact</p>
                         <div>
                             <p className="text-[clamp(1rem,1.25vw,2rem)]">Phone No</p>
