@@ -1,8 +1,9 @@
 "use client";
-import { updateData } from "@/db/CRUD";
 import { Prompt } from "next/font/google";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { addData } from "@/firebase/firestoreService";
+import { toast, Toaster } from "sonner";
 
 const prompt = Prompt({
     subsets: ['latin'],
@@ -16,9 +17,15 @@ export default function Contact() {
     const [orgName, setOrgName] = useState("");
     const [email, setEmail] = useState("");
 
+    const motionButton = (children) => {
+        return (
+            <motion.button whileTap={{ scale: 0.95 }} onClick={() => { addData("contacts", { name, orgName, email }); toast.success("Query Sent Successfully!"); setName(""); setOrgName(""); setEmail(""); }} className="bg-white px-[50px] py-[8px] rounded-[5px] cursor-pointer w-fit text-black">{children}</motion.button>
+        );
+    };
+
     return (
-        <div className={`${prompt.className} flex flex-wrap gap-[50px] items-center justify-between px-[50px] md:px-[100px] py-[70px] bg-black text-white`}>
-            <div className="flex flex-col gap-[30px] ">
+        <div id="contact" className={`${prompt.className} flex flex-wrap gap-[50px] items-center justify-between px-[50px] md:px-[100px] py-[110px] bg-black text-white`}>
+            <div className="flex flex-col gap-[40px] ">
                 <div>
                     <p className="text-[clamp(2rem,2.5vw,3rem)]">Contact us</p>
                     <p className="text-white/40 text-[clamp(1rem,1.25vw,2rem)]">AI doesn't wait, and neither should your business.</p>
@@ -28,11 +35,11 @@ export default function Contact() {
                     <input placeholder="Name" onChange={(e) => setName(e.target.value)} className="outline-none border-b-2 border-white/40" />
                     <input placeholder="Organization Name" onChange={(e) => setOrgName(e.target.value)} className="outline-none border-b-2 border-white/40" />
                     <input placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} className="outline-none border-b-2 border-white/40" />
-                    <motion.button whileTap={{ scale: 0.95 }} onClick={() => updateData(name, orgName, email)} className="bg-white px-[50px] py-[8px] rounded-[5px] cursor-pointer w-fit text-black">Send</motion.button>
+                    {motionButton("Send")}
                 </div>
             </div>
 
-            <div className="flex flex-col gap-[30px] w-[400px]">
+            <div className="flex flex-col gap-[40px] w-[400px]">
                 <div>
                     <p className="text-[clamp(1rem,1.25vw,2rem)]">Phone no</p>
                     <p className="text-white/40">91+8248916635</p>
@@ -47,6 +54,7 @@ export default function Contact() {
                     <p className="text-white/40">eu ipsum eget dignissim pellentesque in posuere placerat commodo tempor ac faucibus dolor id feugiat nulla.</p>
                 </div>
             </div>
+            <Toaster richColors />
         </div>
     );
 };

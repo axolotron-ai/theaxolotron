@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Lato } from "next/font/google";
+import { getData } from "@/firebase/firestoreService";
 
 const lato = Lato({
     subsets: ['latin'],
@@ -12,33 +13,45 @@ const lato = Lato({
 
 export default function Products() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [value, setValue] = useState([]);
 
-    const value = [
-        { srcVideo: "/healthcare.mp4", srcPic: "/healthcare_pic.jpg", name: "Healthcare" },
-        { srcVideo: "/ecommerce.mp4", srcPic: "/ecommerce_pic.jpg", name: "Ecommerce" },
-        { srcVideo: "/logistics.mp4", srcPic: "/logistics_pic.jpg", name: "Logistics" },
-    ];
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getData("products");
+            setValue(data);
+            console.log(data)
+        }
+        fetchData();
+    }, []);
+
+    const motionButton = (children) => {
+        return (
+            <motion.button whileTap={{ scale: 0.95 }} className="bg-white font-semibold px-[30px] py-[10px] flex items-center justify-center my-[60px] cursor-pointer text-[18px] rounded-[7px]">
+                {children}
+            </motion.button>
+        );
+    };
 
     return (
-        <div className="flex flex-col items-center justify-center space-y-4 bg-black">
+        <div id="products" className="flex flex-col items-center justify-center space-y-4 bg-black">
             <div className={`${lato.className} text-center py-[50px]`}>
                 <p className="text-[clamp(1.5rem,2.5vw,3rem)] font-semibold text-white">Our products</p>
                 <p className="text-[#939393] text-[clamp(1.1rem,1.5vw,2rem)]">Redefining industries with the power of AI.</p>
             </div>
 
             <div className="flex flex-wrap justify-evenly gap-10 px-4 w-full">
-                {value.map((val, index) => {
+                {Array.isArray(value) && value.map((val, index) => {
                     const isHovered = hoveredIndex === index;
 
                     return (
                         <div
                             key={index}
-                            className="relative h-[500px] w-[280px] outline-2 outline-[#939393] rounded-[15px] overflow-hidden cursor-pointer"
+                            className="relative h-[500px] w-[280px] outline-2 outline-[#939393]/40 rounded-[15px] overflow-hidden cursor-pointer"
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
                         >
                             <motion.video
-                                src={val.srcVideo}
+                                src={val?.srcVideo}
                                 autoPlay
                                 muted
                                 loop
@@ -56,9 +69,8 @@ export default function Products() {
                                 transition={{ duration: 0.5 }}
                             >
                                 <Image
-                                    priority
-                                    src={val.srcPic}
-                                    alt={val.name}
+                                    src={val?.srcPic}
+                                    alt={val?.name}
                                     fill
                                     quality={100}
                                     sizes="280px"
@@ -74,7 +86,7 @@ export default function Products() {
                                 animate={{ y: isHovered ? -40 : 0 }}
                                 transition={{ type: "spring", stiffness: 120, damping: 15 }}
                             >
-                                <p className="text-white text-[32px] font-semibold">{val.name}</p>
+                                <p className="text-white text-[32px] font-semibold">{val?.name}</p>
 
                                 <motion.button
                                     whileTap={{ scale: 0.90 }}
@@ -91,7 +103,9 @@ export default function Products() {
                 })}
             </div>
 
-            <motion.button whileTap={{ scale: 0.95 }} className="bg-white font-semibold px-[30px] py-[15px] flex items-center justify-center my-[60px] cursor-pointer text-[18px] rounded-[7px]">Explore All</motion.button>
+            <div>
+                {motionButton("Explore All")}
+            </div>
         </div>
     );
-}
+};
