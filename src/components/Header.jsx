@@ -27,7 +27,7 @@ export default function Header() {
                     <p className="cursor-pointer text-gray-400 hover:text-white transition-all duration-200">Academics</p>
                     <p onClick={() => document.getElementById("products").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-gray-400 hover:text-white transition-all duration-200">Products</p>
                     <p onClick={() => document.getElementById("casestudies").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-gray-400 hover:text-white transition-all duration-200">Case Studies</p>
-                    <motion.button whileTap={{ scale: 0.97 }} className="bg-white text-black rounded-full px-[12px] py-[7px] cursor-pointer shadow-inner">Free Consultation</motion.button>
+                    <motion.button onClick={() => document.getElementById("contact").scrollIntoView({ behavior: "smooth" })} whileTap={{ scale: 0.97 }} className="bg-white text-black rounded-full px-[12px] py-[7px] cursor-pointer shadow-inner">Free Consultation</motion.button>
                 </div>
             </div>
             <div className="md:hidden">

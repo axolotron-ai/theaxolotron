@@ -18,7 +18,6 @@ export default function Hero() {
     return (
         <>
             <div id="home" className="relative w-full h-screen overflow-hidden">
-                {/* Background Video */}
                 <video
                     autoPlay
                     loop

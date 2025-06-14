@@ -17,9 +17,21 @@ export default function Contact() {
     const [orgName, setOrgName] = useState("");
     const [email, setEmail] = useState("");
 
+    const whenClicked = () => {
+        if (!name && !orgName && !email) {
+            toast.info("Enter all the fields!");
+        } else {
+            addData("contacts", { name, orgName, email });
+            toast.success("Query Sent Successfully!");
+            document.getElementById("input_01").value = "";
+            document.getElementById("input_02").value = "";
+            document.getElementById("input_03").value = "";
+        }
+    };
+
     const motionButton = (children) => {
         return (
-            <motion.button whileTap={{ scale: 0.95 }} onClick={() => { addData("contacts", { name, orgName, email }); toast.success("Query Sent Successfully!"); setName(""); setOrgName(""); setEmail(""); }} className="bg-white px-[50px] py-[8px] rounded-[5px] cursor-pointer w-fit text-black">{children}</motion.button>
+            <motion.button whileTap={{ scale: 0.95 }} onClick={() => whenClicked()} className="bg-white px-[50px] py-[8px] rounded-[5px] cursor-pointer w-fit text-black">{children}</motion.button>
         );
     };
 
@@ -32,9 +44,9 @@ export default function Contact() {
                 </div>
 
                 <div className="flex flex-col gap-[35px]">
-                    <input placeholder="Name" onChange={(e) => setName(e.target.value)} className="outline-none border-b-2 border-white/40" />
-                    <input placeholder="Organization Name" onChange={(e) => setOrgName(e.target.value)} className="outline-none border-b-2 border-white/40" />
-                    <input placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <input id="input_01" placeholder="Name" onChange={(e) => setName(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <input id="input_02" placeholder="Organization Name" onChange={(e) => setOrgName(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <input id="input_03" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} className="outline-none border-b-2 border-white/40" />
                     {motionButton("Send")}
                 </div>
             </div>

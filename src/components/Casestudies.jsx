@@ -50,12 +50,12 @@ export default function Casestudies() {
                             if (index == 0) {
                                 return (
                                     <div key={index} className="grid sm:grid-cols-2 gap-[3%] mb-[50px]">
-                                        <Image src={val.image} alt="/reload" height={400} width={350} quality={100} className="rounded-[7px] overflow-hidden h-full w-full object-cover" />
+                                        <Image src={val?.image} alt="/reload" height={400} width={350} quality={100} className="rounded-[7px] overflow-hidden h-full w-full object-cover" />
                                         <div className="flex flex-col gap-[16px]">
-                                            <p className="text-[clamp(1rem,1.8vw,3rem)]">{val.title}</p>
-                                            <p className="text-[#939393] text-[clamp(0.8rem,1.25vw,2.5rem)]">{val.description}</p>
-                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit font-semibold">{val.improvement_1}</p>
-                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{val.improvement_2}</p>
+                                            <p className="text-[clamp(1rem,1.8vw,3rem)]">{val?.title}</p>
+                                            <p className="text-[#939393] text-[clamp(0.8rem,1.25vw,2.5rem)]">{val?.description}</p>
+                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit font-semibold">{val?.improvement_1}</p>
+                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{val?.improvement_2}</p>
                                             {motionButton("Read more")}
                                         </div>
                                     </div>
@@ -64,11 +64,11 @@ export default function Casestudies() {
                             else if (index < 3) {
                                 return (
                                     <div key={index} className="w-[50%]">
-                                        <Image src={val.image} alt="/reload" height={350} width={300} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,20rem)] w-[90%] object-cover" />
+                                        <Image src={val?.image} alt="/reload" height={350} width={300} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,20rem)] w-[90%] object-cover" />
                                         <div className="flex flex-col gap-[16px] w-[90%]">
-                                            <p className="text-[clamp(1rem,1.5vw,3rem)]">{val.title}</p>
-                                            <p className="text-[#939393] text-[clamp(0.8rem,1.15vw,2.5rem)]">{val.description}</p>
-                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{val.improvement_1}</p>
+                                            <p className="text-[clamp(1rem,1.5vw,3rem)]">{val?.title}</p>
+                                            <p className="text-[#939393] text-[clamp(0.8rem,1.15vw,2.5rem)]">{val?.description}</p>
+                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{val?.improvement_1}</p>
                                             {motionButton("Read more")}
                                         </div>
                                     </div>

@@ -10,8 +10,9 @@ import {
  */
 const addData = async (collectionName, data) => {
     try {
-        await addDoc(collection(db, collectionName), data);
+        const value = await addDoc(collection(db, collectionName), data);
         console.log("Document successfully added.");
+        return value;
     } catch (e) {
         console.error("Error adding document:", e);
     }
