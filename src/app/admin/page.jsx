@@ -258,7 +258,7 @@ function GetEmail() {
   );
 };
 
-export default function Main() {
+function Main() {
 
   const [page, setPage] = useState();
 
@@ -274,5 +274,55 @@ export default function Main() {
       </div>
       <Toaster richColors />
     </div>
+  );
+};
+
+export default function Core() {
+
+  const [name, setName] = useState("");
+  const [pw, setPw] = useState("");
+  const [isOpen, setIsOpen] = useState(true);
+
+  const realName = "manshree";
+  const realPassword = "15manshree15";
+
+  return (
+    <>{isOpen ?
+      <div className="h-screen w-screen flex items-center justify-center">
+        <div className="flex flex-col gap-[25px] p-[35px] w-[400px] outline-1 shadow-2xl rounded-[7px]">
+          <p className="text-[18px] font-semibold">Authentication</p>
+          <div className="flex flex-col gap-[10px]">
+            <p>Username <span className="text-red-500">*</span></p>
+            <input placeholder="Username" onChange={(e) => setName(e.target.value)} className="outline-none border-b-2" />
+          </div>
+          <div className="flex flex-col gap-[10px]">
+            <p>Password <span className="text-red-500">*</span></p>
+            <input placeholder="Password" onChange={(e) => setPw(e.target.value)} className="outline-none border-b-2" />
+          </div>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              if (!name || !pw) {
+                toast.info("Enter all the fields!");
+              } else {
+                if (name == realName && pw == realPassword) {
+                  toast.success("Successfully Authenticated!");
+                  setIsOpen(false);
+                }
+                else {
+                  toast.info("Enter correct credentials!");
+                }
+              }
+            }}
+            className="text-white bg-black w-fit px-[25px] py-[8px] rounded-[7px] cursor-pointer">Verify</motion.button>
+        </div>
+      </div>
+      :
+      <>
+        <Main />
+      </>
+    }
+      <Toaster richColors />
+    </>
   );
 };
