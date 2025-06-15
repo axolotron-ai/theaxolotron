@@ -50,7 +50,7 @@ export default function Casestudies() {
                             if (index == 0) {
                                 return (
                                     <div key={index} className="grid sm:grid-cols-2 gap-[3%] mb-[50px]">
-                                        <Image src={val?.image} alt="/reload" height={400} width={350} quality={100} className="rounded-[7px] overflow-hidden h-full w-full object-cover" />
+                                        <Image src={val?.image} alt="/reload" height={400} width={350} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,30rem)] w-full object-cover" />
                                         <div className="flex flex-col gap-[16px]">
                                             <p className="text-[clamp(1rem,1.8vw,3rem)]">{val?.title}</p>
                                             <p className="text-[#939393] text-[clamp(0.8rem,1.25vw,2.5rem)]">{val?.description}</p>
@@ -63,7 +63,7 @@ export default function Casestudies() {
                             }
                             else if (index < 3) {
                                 return (
-                                    <div key={index} className="w-[50%]">
+                                    <div key={index} className="w-[50%] flex flex-col gap-[15px]">
                                         <Image src={val?.image} alt="/reload" height={350} width={300} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,20rem)] w-[90%] object-cover" />
                                         <div className="flex flex-col gap-[16px] w-[90%]">
                                             <p className="text-[clamp(1rem,1.5vw,3rem)]">{val?.title}</p>

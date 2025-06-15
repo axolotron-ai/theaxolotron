@@ -232,7 +232,7 @@ function GetEmail() {
 
   return (
     <>
-      <div className="flex items-center justify-between w-full p-[30px]">
+      <div className="flex items-center justify-between mx-[10px] my-[30px] p-[10px] bg-gray-200 rounded-[5px] py-[16px]">
         <p className="text-[18px] font-semibold">Contact Request</p>
       </div>
       <div className="flex flex-col gap-[15px] p-[30px]">
@@ -265,9 +265,9 @@ function Main() {
   return (
     <div className="flex flex-row">
       <div className="h-screen w-[300px] bg-gray-200 p-[40px] gap-[15px]">
-        <p onClick={() => setPage(<PopupModel />)} className="cursor-pointer hover:bg-white px-[5px] py-[7px] rounded-[4px]">Products</p>
-        <p onClick={() => setPage(<CasestudiesData />)} className="cursor-pointer hover:bg-white px-[5px] py-[7px] rounded-[4px]">Case Studies</p>
-        <p onClick={() => setPage(<GetEmail />)} className="cursor-pointer hover:bg-white px-[5px] py-[7px] rounded-[4px]">Contact Request</p>
+        <motion.p whileTap={{ scale: 0.95 }} id="admin-01" onClick={() => { setPage(<PopupModel />); document.getElementById("admin-01").style.backgroundColor = "white"; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Products</motion.p>
+        <motion.p whileTap={{ scale: 0.95 }} id="admin-02" onClick={() => { setPage(<CasestudiesData />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = "white"; document.getElementById("admin-03").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Case Studies</motion.p>
+        <motion.p whileTap={{ scale: 0.95 }} id="admin-03" onClick={() => { setPage(<GetEmail />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = "white"; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Contact Request</motion.p>
       </div>
       <div className="w-full">
         {page}
