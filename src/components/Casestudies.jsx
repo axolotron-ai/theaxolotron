@@ -2,9 +2,10 @@
 import { Lato, Prompt } from "next/font/google";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, X } from "lucide-react";
 import { getData } from "@/firebase/firestoreService";
 import { useEffect, useState } from "react";
+import truncateByWords from "@/utils/truncateByWords";
 
 const lato = Lato({
     subsets: ['latin'],
@@ -20,12 +21,13 @@ const prompt = Prompt({
 
 export default function Casestudies() {
     const [value, setValue] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeSet, setActiveSet] = useState("");
 
     useEffect(() => {
         async function fetchData() {
             const data = await getData("casestudies");
             setValue(data);
-            console.log(data)
         }
         fetchData();
     }, []);
@@ -49,27 +51,29 @@ export default function Casestudies() {
                         value.map((val, index) => {
                             if (index == 0) {
                                 return (
-                                    <div key={index} className="grid sm:grid-cols-2 gap-[3%] mb-[50px]">
-                                        <Image src={val?.image} alt="/reload" height={400} width={350} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,30rem)] w-full object-cover" />
-                                        <div className="flex flex-col gap-[16px]">
-                                            <p className="text-[clamp(1rem,1.8vw,3rem)]">{val?.title}</p>
-                                            <p className="text-[#939393] text-[clamp(0.8rem,1.25vw,2.5rem)]">{val?.description}</p>
-                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit font-semibold">{val?.improvement_1}</p>
-                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{val?.improvement_2}</p>
-                                            {motionButton("Read more")}
+                                    <>
+                                        <div key={index} className="grid sm:grid-cols-2 gap-[3%] mb-[50px]">
+                                            <Image src={val?.image} alt="/reload" height={380} width={340} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,30rem)] w-full object-cover" />
+                                            <div className="flex flex-col gap-[16px]">
+                                                <p className="text-[clamp(1rem,1.8vw,3rem)]">{truncateByWords(val.title, 10)}</p>
+                                                <p className="text-[#939393] text-[clamp(0.8rem,1.25vw,2.5rem)]">{truncateByWords(val.description, 35)}</p>
+                                                <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit font-semibold">{truncateByWords(val.improvement_1, 10)}</p>
+                                                <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{truncateByWords(val.improvement_2, 10)}</p>
+                                                <p onClick={() => { setIsOpen(true); setActiveSet(val); }}>{motionButton("Read more")}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                )
+                                    </>
+                                );
                             }
                             else if (index < 3) {
                                 return (
                                     <div key={index} className="w-[50%] flex flex-col gap-[15px]">
-                                        <Image src={val?.image} alt="/reload" height={350} width={300} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,20rem)] w-[90%] object-cover" />
+                                        <Image src={val?.image} alt="/reload" height={350} width={300} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(14rem,24vw,19rem)] w-[90%] object-cover" />
                                         <div className="flex flex-col gap-[16px] w-[90%]">
-                                            <p className="text-[clamp(1rem,1.5vw,3rem)]">{val?.title}</p>
-                                            <p className="text-[#939393] text-[clamp(0.8rem,1.15vw,2.5rem)]">{val?.description}</p>
-                                            <p className="px-[18px] py-[7px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{val?.improvement_1}</p>
-                                            {motionButton("Read more")}
+                                            <p className="text-[clamp(1rem,1.5vw,3rem)]">{truncateByWords(val.title, 10)}</p>
+                                            <p className="text-[#939393] text-[clamp(0.8rem,1.15vw,2.5rem)]">{truncateByWords(val.description, 35)}</p>
+                                            <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{truncateByWords(val.improvement_1, 10)}</p>
+                                            <p onClick={() => { setIsOpen(true); setActiveSet(val); }}>{motionButton("Read more")}</p>
                                         </div>
                                     </div>
                                 )
@@ -78,10 +82,39 @@ export default function Casestudies() {
                         )
                     }
                 </div>
+                {
+                    isOpen && activeSet &&
+                    <div className="fixed h-screen w-screen inset-0 top-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-6 overflow-y-scroll">
+                        <div className="bg-white text-black p-6 rounded-xl w-full mt-[470px] flex flex-col">
+                            <button
+                                className="flex items-center justify-end text-black text-xl cursor-pointer"
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    setActiveSet(null);
+                                }}
+                            >
+                                <X />
+                            </button>
+                            <div>
+                                <h2 className="text-2xl font-bold mb-4">{activeSet.title}</h2>
+                                <Image
+                                    src={activeSet?.image}
+                                    alt="case"
+                                    height={200}
+                                    width={380}
+                                    className="rounded-md mb-4 object-cover w-full h-[300px]"
+                                />
+                                <p className="text-gray-700 mb-4">{activeSet.description}</p>
+                                <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold mb-[20px]">{activeSet.improvement_1}</p>
+                                {activeSet.improvement_2 && <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{activeSet.improvement_2}</p>}
+                            </div>
+                        </div>
+                    </div>
+                }
 
-                <div className="flex items-center justify-center py-[60px] bg-gradient-to-t from-black via-transparent to-transparent">
+                <a href="/blog" className="flex items-center justify-center py-[60px] bg-gradient-to-t from-black via-transparent to-transparent">
                     {motionButton("Explore more")}
-                </div>
+                </a>
             </div>
         </>
     );

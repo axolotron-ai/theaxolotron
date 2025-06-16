@@ -241,6 +241,7 @@ function GetEmail() {
             <div className="flex flex-col gap-[8px]">
               <p>Name: {val.name}</p>
               <p>Org Name: {val.orgName}</p>
+              <p>Contact No: {val.cno}</p>
               <p>Email ID: {val.email}</p>
             </div>
             <motion.div whileTap={{ scale: 0.70 }}

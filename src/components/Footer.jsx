@@ -1,4 +1,5 @@
 import { MuseoModerno } from "next/font/google";
+import Image from "next/image";
 
 const text = MuseoModerno({
     subsets: ['latin'],
@@ -33,10 +34,13 @@ export default function Footer() {
                         </div>
                         <div>
                             <p className="text-[clamp(1rem,1.25vw,2rem)]">Email Address</p>
-                            <p className="text-white/50">axolotron.ai@gmail.com</p>
+                            <a className="text-white/50 underline cursor-pointer" href="mailto:axolotron.ai@gmail.com">axolotron.ai@gmail.com</a>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="bg-[#141414] h-[180px] w-full my-[-50px]">
+                <Image src="Axolotron.svg" alt="/reload" height={100} width={250} quality={100} className="h-full w-full object-fill" />
             </div>
         </>
     );
