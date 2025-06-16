@@ -2,23 +2,19 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Lato } from "next/font/google";
 import { getData } from "@/firebase/firestoreService";
-
-const lato = Lato({
-    subsets: ['latin'],
-    weight: ['400', '700'],
-    variable: '--font-lato',
-});
+import lato from "@/utils/fonts";
 
 export default function Products() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
-    const [value, setValue] = useState([]);
+    const value = [{ name: "Healthcare", srcVideo: "/healthcare_vdo.mp4", srcPic: "/healthcare.jpg", link: "" },
+    { name: "Ecommerce", srcVideo: "/ecommerce_vdo.mp4", srcPic: "/ecommerce.jpg" },
+    { name: "Logistics", srcVideo: "/logistics.mp4", srcPic: "/logistics.jpg" }];
 
     useEffect(() => {
         async function fetchData() {
             const data = await getData("products");
-            setValue(data);
+            //setValue(data);
         }
         fetchData();
     }, []);
@@ -27,20 +23,6 @@ export default function Products() {
         return (
             <motion.button whileTap={{ scale: 0.95 }} className="bg-white font-semibold px-[30px] py-[10px] flex items-center justify-center my-[60px] cursor-pointer text-[18px] rounded-[7px]">
                 {children}
-            </motion.button>
-        );
-    };
-
-    const MotionButton2 = () => {
-        return (
-            <motion.button
-                whileTap={{ scale: 0.90 }}
-                initial={false}
-                animate={{ opacity: isHovered ? 1 : 0 }}
-                transition={{ duration: 0.4 }}
-                className="mt-3 bg-white text-black px-[70px] py-2 rounded-lg shadow-md font-semibold cursor-pointer"
-            >
-                Explore
             </motion.button>
         );
     };
@@ -55,6 +37,7 @@ export default function Products() {
             <div className="flex flex-wrap justify-evenly gap-10 px-4 w-full">
                 {Array.isArray(value) && value.map((val, index) => {
                     const isHovered = hoveredIndex === index;
+                    console.log(val);
 
                     if (index < 3) {
                         return (
@@ -102,15 +85,17 @@ export default function Products() {
                                 >
                                     <p className="text-white text-[32px] font-semibold">{val?.name}</p>
 
-                                    <motion.button
-                                        whileTap={{ scale: 0.90 }}
-                                        initial={false}
-                                        animate={{ opacity: isHovered ? 1 : 0 }}
-                                        transition={{ duration: 0.4 }}
-                                        className="mt-3 bg-white text-black px-[70px] py-2 rounded-lg shadow-md font-semibold cursor-pointer"
-                                    >
-                                        Explore
-                                    </motion.button>
+                                    <a href={val?.link}>
+                                        <motion.button
+                                            whileTap={{ scale: 0.90 }}
+                                            initial={false}
+                                            animate={{ opacity: isHovered ? 1 : 0 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="mt-3 bg-white text-black px-[70px] py-2 rounded-lg shadow-md font-semibold cursor-pointer"
+                                        >
+                                            Explore
+                                        </motion.button>
+                                    </a>
                                 </motion.div>
                             </div>
                         );
