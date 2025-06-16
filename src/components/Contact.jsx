@@ -53,7 +53,7 @@ export default function Contact() {
                     {motionButton("Send")}
                 </div>
             </div>
-            <div className="h-[600px] w-[1px] bg-white/40"/>
+            <div className="h-[600px] w-[1px] bg-white/40" />
             <div className="flex flex-col gap-[60px] w-[400px]">
                 <div>
                     <p className="text-[clamp(1rem,1.25vw,2rem)]">Phone no</p>
@@ -66,7 +66,7 @@ export default function Contact() {
                 </div>
                 <div>
                     <p className="text-[clamp(1rem,1.25vw,2rem)]">Address</p>
-                    <p className="text-white/40">eu ipsum eget dignissim pellentesque in posuere placerat commodo tempor ac faucibus dolor id feugiat nulla.</p>
+                    <p className="text-white/40">89, Sangmam Nagar, Chettipalayam, Coimbatore, 641201.</p>
                 </div>
             </div>
             <Toaster richColors />

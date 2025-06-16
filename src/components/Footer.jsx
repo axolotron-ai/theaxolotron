@@ -1,3 +1,4 @@
+import { Facebook } from "lucide-react";
 import { MuseoModerno } from "next/font/google";
 import Image from "next/image";
 
@@ -16,8 +17,13 @@ export default function Footer() {
                     <p className="text-white/50 text-[clamp(1rem,1.25vw,2rem)]">AI products that define evolution</p>
                 </a>
                 <div className="flex flex-col sm:flex-row justify-evenly gap-[15%] w-[50%]">
-                    <div>
-                        <p className="text-[clamp(1rem,1.25vw,2rem)]">Socials</p>
+                    <div className="flex flex-col gap-[15px]">
+                        <p className="text-[clamp(1rem,1.25vw,2rem)] ">Socials</p>
+                        <a href="https://www.facebook.com/share/1VcEE6ftQH/" target="blank" className="flex flex-row gap-[10px]"> <Image src="/socialHandlesIcons/facebook.png" alt="/reload" width={25} height={15} quality={100} /> @Axolotron</a>
+                        <a href="https://www.instagram.com/axolotron/profilecard/?igsh=MXhlYnFneW82OTZvYQ==" target="blank" className="flex flex-row gap-[8px]"> <Image src="/socialHandlesIcons/instagram.png" alt="/reload" width={27} height={17} quality={100} /> @Axolotron</a>
+                        <a href="https://www.linkedin.com/company/axolotron/" target="blank" className="flex flex-row gap-[10px]"> <Image src="/socialHandlesIcons/linkedin.png" alt="/reload" width={25} height={15} quality={100} /> @Axolotron</a>
+                        <a href="https://www.reddit.com/u/axolotronai/s/vnT0B5Dp1t" target="blank" className="flex flex-row gap-[10px]"> <Image src="/socialHandlesIcons/reddit.png" alt="/reload" width={25} height={15} quality={100} /> @Axolotron</a>
+                        <a href="https://x.com/axolotronAI?t=0_hFej4tXfSUpk4LfckbVw&s=09" target="blank" className="flex flex-row gap-[10px]"> <Image src="/socialHandlesIcons/twitter.png" alt="/reload" width={25} height={15} quality={100} className="text-white bg-white p-[2px] rounded-[5px]" /> @Axolotron</a>
                     </div>
                     <div className="flex flex-col gap-[8px]">
                         <p className="text-[clamp(1rem,1.25vw,2rem)]">Products</p>
