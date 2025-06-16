@@ -19,7 +19,7 @@ const prompt = Prompt({
     variable: '--font-lato',
 });
 
-export default function Casestudies() {
+export default function CasestudiesPage() {
     const [value, setValue] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [activeSet, setActiveSet] = useState("");
@@ -49,7 +49,7 @@ export default function Casestudies() {
                     {
                         Array.isArray(value) &&
                         value.map((val, index) => (
-                            <div key={val?.id} onClick={() => { setIsOpen(true); setActiveSet(val); }} className="h-full w-[320px] flex flex-col gap-[10px] cursor-pointer hover:outline hover:outline-white/40 p-[10px] rounded-[10px]" >
+                            <div key={val?.id+index} onClick={() => { setIsOpen(true); setActiveSet(val); }} className="h-full w-[320px] flex flex-col gap-[10px] cursor-pointer hover:outline hover:outline-white/40 p-[10px] rounded-[10px]" >
                                 <Image src={val.image} alt="/reload" height={200} width={250} quality={100} className="h-[200px] w-[300px] object-cover rounded-[10px]" />
                                 <p className="font-semibold">{truncateByWords(val.title, 8)}</p>
                                 <p className="font-light">{truncateByWords(val.description, 10)}</p>
