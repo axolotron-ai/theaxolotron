@@ -49,7 +49,7 @@ export default function CasestudiesPage() {
                     {
                         Array.isArray(value) &&
                         value.map((val, index) => (
-                            <div key={val?.id+index} onClick={() => { setIsOpen(true); setActiveSet(val); }} className="h-full w-[320px] flex flex-col gap-[10px] cursor-pointer hover:outline hover:outline-white/40 p-[10px] rounded-[10px]" >
+                            <div key={val?.id + index} onClick={() => { setIsOpen(true); setActiveSet(val); }} className="h-full w-[320px] flex flex-col gap-[10px] cursor-pointer hover:outline hover:outline-white/40 p-[10px] rounded-[10px]" >
                                 <Image src={val.image} alt="/reload" height={200} width={250} quality={100} className="h-[200px] w-[300px] object-cover rounded-[10px]" />
                                 <p className="font-semibold">{truncateByWords(val.title, 8)}</p>
                                 <p className="font-light">{truncateByWords(val.description, 10)}</p>
@@ -61,9 +61,9 @@ export default function CasestudiesPage() {
                 {
                     isOpen && activeSet &&
                     <div key={activeSet?.id} className="fixed h-screen w-screen inset-0 top-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-6 overflow-y-scroll">
-                        <div className="bg-white text-black p-6 rounded-xl w-full mt-[470px] flex flex-col">
+                        <div className="bg-grid-inch text-white p-6 rounded-xl w-full mt-[570px] flex flex-col">
                             <button
-                                className="flex items-center justify-end text-black text-xl cursor-pointer"
+                                className="flex items-center justify-end text-white text-xl cursor-pointer"
                                 onClick={() => {
                                     setIsOpen(false);
                                     setActiveSet(null);
@@ -72,17 +72,20 @@ export default function CasestudiesPage() {
                                 <X />
                             </button>
                             <div>
-                                <h2 className="text-2xl font-bold mb-4">{activeSet.title}</h2>
+                                <h2 className="text-2xl font-bold mb-4 text-white">{activeSet.title}</h2>
                                 <Image
                                     src={activeSet?.image}
                                     alt="case"
                                     height={200}
-                                    width={400}
-                                    className="rounded-md mb-4 object-cover w-full h-[300px]"
+                                    width={380}
+                                    className="rounded-md mb-4 object-cover w-[500px] h-[300px] mt-[40px]"
                                 />
-                                <p className="text-gray-700 mb-4">{activeSet.description}</p>
+                                <p className="mb-6 text-white/60 flex text-justify my-[40px]">{activeSet.description}</p>
                                 <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold mb-[20px]">{activeSet.improvement_1}</p>
                                 {activeSet.improvement_2 && <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{activeSet.improvement_2}</p>}
+                                <div className="flex items-center justify-center">
+                                    <a href="/blog" className="bg-white text-black px-[15px] py-[10px] font-semibold cursor-pointer rounded-[5px] mt-[40px] w-fit">Other Blogs</a>
+                                </div>
                             </div>
                         </div>
                     </div>
