@@ -1,4 +1,4 @@
-import { Lato } from "next/font/google";
+import { Lato, Oswald } from "next/font/google";
 
 const lato = Lato({
     subsets: ['latin'],
@@ -6,4 +6,10 @@ const lato = Lato({
     variable: '--font-lato',
 });
 
-export default lato;
+const oswald = Oswald({
+    subsets: ['latin'],
+    weight: ['400', '700'],
+    variable: '--font-oswald',
+});
+
+export { lato, oswald };

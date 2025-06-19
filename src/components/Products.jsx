@@ -3,13 +3,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getData } from "@/firebase/firestoreService";
-import lato from "@/utils/fonts";
+import { lato } from "@/utils/fonts";
 
 export default function Products() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
-    const value = [{ name: "Healthcare", srcVideo: "/healthcare_vdo.mp4", srcPic: "/healthcare.jpg", link: "" },
+    const value = [{ name: "Healthcare", srcVideo: "/healthcare_vdo.mp4", srcPic: "/healthcare.jpg", link: "/products/healthcare" },
     { name: "Ecommerce", srcVideo: "/ecommerce_vdo.mp4", srcPic: "/ecommerce.jpg" },
-    { name: "Logistics", srcVideo: "/logistics.mp4", srcPic: "/logistics.jpg" }];
+    { name: "Logistics", srcVideo: "/logistics_vdo.mp4", srcPic: "/logistics.jpg" }];
 
     useEffect(() => {
         async function fetchData() {
