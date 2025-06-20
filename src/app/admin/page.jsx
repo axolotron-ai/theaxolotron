@@ -2,10 +2,11 @@
 import { addData, deleteData, getData } from "@/firebase/firestoreService";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Plus, Trash2, X } from "lucide-react";
+import { ChevronDown, ChevronUp, Plus, Trash2, X } from "lucide-react";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 import { deleteDoc } from "firebase/firestore";
+import truncateByWords from "@/utils/truncateByWords";
 
 function PopupModel() {
   const [isOpen, setIsOpen] = useState(false);
@@ -145,7 +146,7 @@ function CasestudiesData() {
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-xl max-w-md w-full flex flex-col gap-[20px] outline-1">
+          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1">
             <h2 className="text-xl font-semibold mb-2">Post</h2>
             <div className="flex flex-col gap-[10px]">
               <p>Title <span className="text-red-500">*</span></p>
@@ -193,9 +194,337 @@ function CasestudiesData() {
 
       <div className="flex flex-col gap-[15px] p-[30px]">
         {Array.isArray(value) && value.map((val, index) => (
-          <div key={index} className="bg-accent rounded-[7px] p-[8px] flex items-center justify-between mr-[15px]">
-            <div className="flex flex-col gap-[8px]">
-              <p>Title: {val.title}</p>
+          <div key={index} className="bg-accent rounded-[7px] p-[15px] flex items-center justify-between mr-[15px] max-w-[1150px]">
+            <div className="flex flex-col gap-[8px] w-[90%] overflow-hidden text-justify">
+              <p>Title:{val.title}</p>
+              <p>Description: {val.description}</p>
+              <p>Source Image: {val.image}</p>
+              <p>Improvement 1: {val.improvement_1}</p>
+              <p>Improvement 2: {val.improvement_2}</p>
+            </div>
+            <motion.div whileTap={{ scale: 0.70 }}
+              onClick={() => {
+                if (deleteData("casestudies", val.id)) {
+                  toast.success("Data deleted successfully!");
+                }
+              }} className="mr-[25px] text-red-600 cursor-pointer hover:bg-red-200 p-[5px] rounded-[2px] transition-all duration-200">
+              <Trash2 />
+            </motion.div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+function Healthcare() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [improvement_1, setImprovement_1] = useState("");
+  const [improvement_2, setImprovement_2] = useState("");
+  const [benefits, setBenefits] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      async function fetchData() {
+        const data = await getData("healthcare");
+        setValue(data);
+      }
+      fetchData();
+    }, 100);
+  }, []);
+
+  const InputReturn = (nos) => {
+    for (let i = 0; i < nos.length; i++) {
+      return (<input placeholder={nos} />);
+    }
+  }
+
+  return (
+    <div className="transition-all duration-300">
+      <div className="flex items-center justify-between mx-[10px] my-[30px] p-[10px] bg-gray-200 rounded-[7px]">
+        <p className="text-[18px] font-semibold">Healthcare</p>
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsOpen(true)}
+          className="px-4 py-2 bg-black text-white rounded cursor-pointer flex items-center justify-between gap-[10px]"
+        >
+          Add New <Plus />
+        </motion.button>
+      </div>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1">
+            <h2 className="text-xl font-semibold mb-2">Post</h2>
+            <div className="flex flex-col gap-[10px]">
+              <p>Title <span className="text-red-500">*</span></p>
+              <input placeholder="Title" onChange={(e) => setTitle(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Description <span className="text-red-500">*</span></p>
+              <input placeholder="Description" onChange={(e) => setDescription(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Image Link <span className="text-red-500">*</span></p>
+              <input placeholder="Image Link" onChange={(e) => setImage(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div>
+              <div className="flex flex-row items-center justify-between">
+                <p>Key Benefits  <span className="text-red-500">*</span></p>
+                <p className="cursor-pointer" onClick={() => setBenefits((val) => (val + 1))}><Plus /></p>
+              </div>
+              <div>
+                  <input />
+                  <input />
+                  <input />
+                  <input />
+                  <input />
+                  <input />
+              </div>
+            </div>
+            <div className="flex flex-row gap-[15px]">
+              <motion.button whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (!title || !description || !image || !improvement_1 || !improvement_2) {
+                    toast.info("Enter all the fields!");
+                  }
+                  else {
+                    addData("casestudies", { title, description, image, improvement_1, improvement_2 });
+                    setIsOpen(false);
+                    toast.success("Data added successfully!");
+                  }
+                }} className="mt-4 px-4 py-2 bg-white text-black rounded cursor-pointer border-1">Add</motion.button>
+              <motion.button whileTap={{ scale: 0.95 }}
+                onClick={() => setIsOpen(false)}
+                className="mt-4 px-4 py-2 bg-black text-white rounded cursor-pointer flex items-center justify-between gap-[10px]"
+              >
+                Close <X />
+              </motion.button>
+            </div>
+          </div>
+          <Toaster richColors />
+        </div>
+      )}
+
+      <div className="flex flex-col gap-[15px] p-[30px]">
+        {Array.isArray(value) && value.map((val, index) => (
+          <div key={index} className="bg-accent rounded-[7px] p-[15px] flex items-center justify-between mr-[15px] max-w-[1150px]">
+            <div className="flex flex-col gap-[8px] w-[90%] overflow-hidden text-justify">
+              <p>Title:{val.title}</p>
+              <p>Description: {val.description}</p>
+              <p>Source Image: {val.image}</p>
+              <p>Improvement 1: {val.improvement_1}</p>
+              <p>Improvement 2: {val.improvement_2}</p>
+            </div>
+            <motion.div whileTap={{ scale: 0.70 }}
+              onClick={() => {
+                if (deleteData("casestudies", val.id)) {
+                  toast.success("Data deleted successfully!");
+                }
+              }} className="mr-[25px] text-red-600 cursor-pointer hover:bg-red-200 p-[5px] rounded-[2px] transition-all duration-200">
+              <Trash2 />
+            </motion.div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+function Ecommerce() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [improvement_1, setImprovement_1] = useState("");
+  const [improvement_2, setImprovement_2] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      async function fetchData() {
+        const data = await getData("ecommerce");
+        setValue(data);
+      }
+      fetchData();
+    }, 100);
+  }, []);
+
+  return (
+    <div className="transition-all duration-300">
+      <div className="flex items-center justify-between mx-[10px] my-[30px] p-[10px] bg-gray-200 rounded-[7px]">
+        <p className="text-[18px] font-semibold">Ecommerce</p>
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsOpen(true)}
+          className="px-4 py-2 bg-black text-white rounded cursor-pointer flex items-center justify-between gap-[10px]"
+        >
+          Add New <Plus />
+        </motion.button>
+      </div>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1">
+            <h2 className="text-xl font-semibold mb-2">Post</h2>
+            <div className="flex flex-col gap-[10px]">
+              <p>Title <span className="text-red-500">*</span></p>
+              <input placeholder="Title" onChange={(e) => setTitle(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Description <span className="text-red-500">*</span></p>
+              <input placeholder="Description" onChange={(e) => setDescription(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Image Link <span className="text-red-500">*</span></p>
+              <input placeholder="Image Link" onChange={(e) => setImage(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Improvement 1 <span className="text-red-500">*</span></p>
+              <input placeholder="Improvement 1" onChange={(e) => setImprovement_1(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Improvement 2 <span className="text-red-500">*</span></p>
+              <input placeholder="Improvement 2" onChange={(e) => setImprovement_2(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-row gap-[15px]">
+              <motion.button whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (!title || !description || !image || !improvement_1 || !improvement_2) {
+                    toast.info("Enter all the fields!");
+                  }
+                  else {
+                    addData("casestudies", { title, description, image, improvement_1, improvement_2 });
+                    setIsOpen(false);
+                    toast.success("Data added successfully!");
+                  }
+                }} className="mt-4 px-4 py-2 bg-white text-black rounded cursor-pointer border-1">Add</motion.button>
+              <motion.button whileTap={{ scale: 0.95 }}
+                onClick={() => setIsOpen(false)}
+                className="mt-4 px-4 py-2 bg-black text-white rounded cursor-pointer flex items-center justify-between gap-[10px]"
+              >
+                Close <X />
+              </motion.button>
+            </div>
+          </div>
+          <Toaster richColors />
+        </div>
+      )}
+
+      <div className="flex flex-col gap-[15px] p-[30px]">
+        {Array.isArray(value) && value.map((val, index) => (
+          <div key={index} className="bg-accent rounded-[7px] p-[15px] flex items-center justify-between mr-[15px] max-w-[1150px]">
+            <div className="flex flex-col gap-[8px] w-[90%] overflow-hidden text-justify">
+              <p>Title:{val.title}</p>
+              <p>Description: {val.description}</p>
+              <p>Source Image: {val.image}</p>
+              <p>Improvement 1: {val.improvement_1}</p>
+              <p>Improvement 2: {val.improvement_2}</p>
+            </div>
+            <motion.div whileTap={{ scale: 0.70 }}
+              onClick={() => {
+                if (deleteData("casestudies", val.id)) {
+                  toast.success("Data deleted successfully!");
+                }
+              }} className="mr-[25px] text-red-600 cursor-pointer hover:bg-red-200 p-[5px] rounded-[2px] transition-all duration-200">
+              <Trash2 />
+            </motion.div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+function Logistics() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [improvement_1, setImprovement_1] = useState("");
+  const [improvement_2, setImprovement_2] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      async function fetchData() {
+        const data = await getData("logistics");
+        setValue(data);
+      }
+      fetchData();
+    }, 100);
+  }, []);
+
+  return (
+    <div className="transition-all duration-300">
+      <div className="flex items-center justify-between mx-[10px] my-[30px] p-[10px] bg-gray-200 rounded-[7px]">
+        <p className="text-[18px] font-semibold">Logistics</p>
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsOpen(true)}
+          className="px-4 py-2 bg-black text-white rounded cursor-pointer flex items-center justify-between gap-[10px]"
+        >
+          Add New <Plus />
+        </motion.button>
+      </div>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1">
+            <h2 className="text-xl font-semibold mb-2">Post</h2>
+            <div className="flex flex-col gap-[10px]">
+              <p>Title <span className="text-red-500">*</span></p>
+              <input placeholder="Title" onChange={(e) => setTitle(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Description <span className="text-red-500">*</span></p>
+              <input placeholder="Description" onChange={(e) => setDescription(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Image Link <span className="text-red-500">*</span></p>
+              <input placeholder="Image Link" onChange={(e) => setImage(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Improvement 1 <span className="text-red-500">*</span></p>
+              <input placeholder="Improvement 1" onChange={(e) => setImprovement_1(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <p>Improvement 2 <span className="text-red-500">*</span></p>
+              <input placeholder="Improvement 2" onChange={(e) => setImprovement_2(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-row gap-[15px]">
+              <motion.button whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (!title || !description || !image || !improvement_1 || !improvement_2) {
+                    toast.info("Enter all the fields!");
+                  }
+                  else {
+                    addData("casestudies", { title, description, image, improvement_1, improvement_2 });
+                    setIsOpen(false);
+                    toast.success("Data added successfully!");
+                  }
+                }} className="mt-4 px-4 py-2 bg-white text-black rounded cursor-pointer border-1">Add</motion.button>
+              <motion.button whileTap={{ scale: 0.95 }}
+                onClick={() => setIsOpen(false)}
+                className="mt-4 px-4 py-2 bg-black text-white rounded cursor-pointer flex items-center justify-between gap-[10px]"
+              >
+                Close <X />
+              </motion.button>
+            </div>
+          </div>
+          <Toaster richColors />
+        </div>
+      )}
+
+      <div className="flex flex-col gap-[15px] p-[30px]">
+        {Array.isArray(value) && value.map((val, index) => (
+          <div key={index} className="bg-accent rounded-[7px] p-[15px] flex items-center justify-between mr-[15px] max-w-[1150px]">
+            <div className="flex flex-col gap-[8px] w-[90%] overflow-hidden text-justify">
+              <p>Title:{val.title}</p>
               <p>Description: {val.description}</p>
               <p>Source Image: {val.image}</p>
               <p>Improvement 1: {val.improvement_1}</p>
@@ -262,11 +591,19 @@ function GetEmail() {
 function Main() {
 
   const [page, setPage] = useState();
+  const [clicked, setClicked] = useState(false);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row transition-all duration-300">
       <div className="h-screen w-[300px] bg-gray-200 p-[40px] gap-[15px]">
-        <motion.p whileTap={{ scale: 0.95 }} id="admin-01" onClick={() => { setPage(<PopupModel />); document.getElementById("admin-01").style.backgroundColor = "white"; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Products</motion.p>
+        <motion.p whileTap={{ scale: 0.95 }} id="admin-01" onClick={() => { setClicked((pre) => (!pre)); document.getElementById("admin-01").style.backgroundColor = "white"; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px] flex flex-row items-center justify-between">Products {!clicked ? <ChevronDown /> : <ChevronUp />}</motion.p>
+        {clicked &&
+          <div className="flex flex-col gap-[10px] ml-[15px] my-[10px]">
+            <motion.p whileTap={{ scale: 0.95 }} onClick={() => setPage(<Healthcare />)} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Healthcare</motion.p>
+            <motion.p whileTap={{ scale: 0.95 }} onClick={() => setPage(<Ecommerce />)} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Ecommerce</motion.p>
+            <motion.p whileTap={{ scale: 0.95 }} onClick={() => setPage(<Logistics />)} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Logistics</motion.p>
+          </div>
+        }
         <motion.p whileTap={{ scale: 0.95 }} id="admin-02" onClick={() => { setPage(<CasestudiesData />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = "white"; document.getElementById("admin-03").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Case Studies</motion.p>
         <motion.p whileTap={{ scale: 0.95 }} id="admin-03" onClick={() => { setPage(<GetEmail />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = "white"; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Contact Request</motion.p>
       </div>
