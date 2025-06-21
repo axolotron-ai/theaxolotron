@@ -10,7 +10,7 @@ const lato = Lato({
 export default function Team() {
     return (
         <>
-            <div className={`bg-[#151515] h-screen grid md:grid-cols-2 items-center justify-center ${lato.className} px-[clamp(1.5rem,7vw,11rem)]`}>
+            <div className={`bg-[#151515] h-full sm:h-screen grid md:grid-cols-2 items-center justify-center ${lato.className} px-[clamp(1.5rem,7vw,11rem)]`}>
                 <div className="relative flex items-center justify-center">
                     <Image src="/team.jpg" alt="/reload" height={400} width={500} quality={100} className="rounded-[7px] h-[400px] w-[500px] object-cover" />
                     <div className="absolute inset-0 z-20">

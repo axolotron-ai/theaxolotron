@@ -45,7 +45,7 @@ export default function Casestudies() {
                     <p className={`${prompt.className} text-[clamp(1rem,2vw,3rem)]`}>CASE STUDIES</p>
                     <p className="text-[#939393] text-[clamp(1.25rem,3vw,3.5rem)]">THE <span className="text-white">SUCCESS</span> STORIES</p>
                 </div>
-                <div className="mx-[clamp(1.5rem,8vw,11rem)] flex flex-wrap">
+                <div className="mx-[clamp(1.5rem,8vw,11rem)] flex flex-wrap flex-col sm:flex-row">
                     {
                         Array.isArray(value) &&
                         value.map((val, index) => {
@@ -67,7 +67,7 @@ export default function Casestudies() {
                             }
                             else if (index < 3) {
                                 return (
-                                    <div key={index} className="w-[50%] flex flex-col gap-[15px]">
+                                    <div key={index} className="w-full sm:w-[50%] flex flex-col gap-[15px] mt-[20px]">
                                         <Image src={val?.image} alt="/reload" height={350} width={300} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(14rem,24vw,19rem)] w-[90%] object-cover" />
                                         <div className="flex flex-col gap-[16px] w-[90%]">
                                             <p className="text-[clamp(1rem,1.5vw,3rem)]">{truncateByWords(val.title, 10)}</p>

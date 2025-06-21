@@ -16,7 +16,7 @@ export default function Footer() {
                     <p className="text-[clamp(1.5rem,1.8vw,2.25rem)]">Axolotron</p>
                     <p className="text-white/50 text-[clamp(1rem,1.25vw,2rem)]">AI products that define evolution</p>
                 </a>
-                <div className="flex flex-col sm:flex-row justify-evenly gap-[15%] w-[50%]">
+                <div className="flex flex-col sm:flex-row justify-evenly gap-[50px] sm:gap-[15%] w-[50%]">
                     <div className="flex flex-col gap-[15px]">
                         <p className="text-[clamp(1rem,1.25vw,2rem)] ">Socials</p>
                         <a href="https://www.facebook.com/share/1VcEE6ftQH/" target="blank" className="flex flex-row gap-[10px]"> <Image src="/socialHandlesIcons/facebook.png" alt="/reload" width={25} height={15} quality={100} /> @Axolotron</a>
@@ -45,7 +45,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="bg-[#141414] h-[180px] w-full my-[-50px]">
+            <div className="bg-[#141414] pt-[20px] h-[70px] sm:h-[180px] w-full my-[-50px]">
                 <Image src="Axolotron.svg" alt="/reload" height={100} width={250} quality={100} className="h-full w-full object-fill" />
             </div>
         </>
