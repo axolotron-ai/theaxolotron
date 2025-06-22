@@ -6,7 +6,7 @@ export default function Levels() {
 
     return (
         <>
-            <div className="bg-[#DDDDDD] px-[3%] py-[5%] flex flex-col gap-[40px]">
+            <div id="products" className="bg-[#DDDDDD] px-[3%] py-[5%] flex flex-col gap-[40px]">
                 <div>
                     <p className="font-semibold text-[34px] pl-[3%]">Academic Levels ;</p>
                 </div>

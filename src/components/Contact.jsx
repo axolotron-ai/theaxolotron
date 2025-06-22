@@ -1,8 +1,8 @@
 "use client";
 import { Prompt } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { addData } from "@/firebase/firestoreService";
+import { addData, getData } from "@/firebase/firestoreService";
 import { toast, Toaster } from "sonner";
 
 const prompt = Prompt({
@@ -17,6 +17,20 @@ export default function Contact() {
     const [orgName, setOrgName] = useState("");
     const [email, setEmail] = useState("");
     const [cno, setCno] = useState("");
+    const [link, setLink] = useState("");
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            async function fetchData() {
+                const data = await getData("formlink");
+                if (data?.[0]?.formlink) {
+                    setLink(data[0].formlink);
+                    console.log(data[0].formlink);
+                }
+            }
+            fetchData();
+        }, 10000);
+    }, []);
 
     const whenClicked = () => {
         if (!name || !orgName || !email || !cno) {
@@ -70,6 +84,11 @@ export default function Contact() {
                         <p className="text-white/40">89, Sangmam Nagar, Chettipalayam, Coimbatore, 641201.</p>
                     </div>
                 </div>
+            </div>
+            <div className="w-full h-full flex flex-col items-center justify-between gap-[20px]">
+                <div className="flex flex-row w-full items-center gap-[5px]"><p className="w-full h-[1px] bg-white/50" />OR<p className="w-full h-[1px] bg-white/50" /></div>
+                <p>Simply Fill The Form</p>
+                <a href={link} target="_blank"><motion.button whileTap={{ scale: 0.95 }} className="px-[20px] py-[8px] bg-white text-black text-[18px] rounded-[7px] cursor-pointer">The Form</motion.button></a>
             </div>
             <Toaster richColors />
         </div>

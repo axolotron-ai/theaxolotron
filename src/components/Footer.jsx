@@ -30,6 +30,8 @@ export default function Footer() {
                         <p className="text-white/50">Healthcare</p>
                         <p className="text-white/50">E-commerce</p>
                         <p className="text-white/50">Logistics</p>
+
+                        <a href="/academy" className="text-white/50 mt-[15px] underline">Academy</a>
                     </div>
                     <div className="flex flex-col justify-evenly gap-[7px]">
                         <p className="text-[clamp(1rem,1.25vw,2rem)]">Contact</p>

@@ -278,12 +278,12 @@ function Healthcare() {
                 <p className="cursor-pointer" onClick={() => setBenefits((val) => (val + 1))}><Plus /></p>
               </div>
               <div>
-                  <input />
-                  <input />
-                  <input />
-                  <input />
-                  <input />
-                  <input />
+                <input />
+                <input />
+                <input />
+                <input />
+                <input />
+                <input />
               </div>
             </div>
             <div className="flex flex-row gap-[15px]">
@@ -588,6 +588,87 @@ function GetEmail() {
   );
 };
 
+function FormPage() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [formlink, setFormlink] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      async function fetchData() {
+        const data = await getData("formlink");
+        setValue(data);
+      }
+      fetchData();
+    }, 100);
+  }, []);
+
+  return (
+    <div className="transition-all duration-300">
+      <div className="flex items-center justify-between mx-[10px] my-[30px] p-[10px] bg-gray-200 rounded-[7px]">
+        <p className="text-[18px] font-semibold">The Form Link</p>
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsOpen(true)}
+          className="px-4 py-2 bg-black text-white rounded cursor-pointer flex items-center justify-between gap-[10px]"
+        >
+          Add New <Plus />
+        </motion.button>
+      </div>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1">
+            <h2 className="text-xl font-semibold mb-2">Post</h2>
+            <div className="flex flex-col gap-[10px]">
+              <p>The Form link <span className="text-red-500">*</span></p>
+              <input placeholder="The Form link" onChange={(e) => setFormlink(e.target.value)} className="outline-none border-b-1" />
+            </div>
+            <div className="flex flex-row gap-[15px]">
+              <motion.button whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (!formlink) {
+                    toast.info("Enter all the fields!");
+                  }
+                  else {
+                    addData("formlink", { formlink });
+                    setIsOpen(false);
+                    toast.success("Data added successfully!");
+                  }
+                }} className="mt-4 px-4 py-2 bg-white text-black rounded cursor-pointer border-1">Add</motion.button>
+              <motion.button whileTap={{ scale: 0.95 }}
+                onClick={() => setIsOpen(false)}
+                className="mt-4 px-4 py-2 bg-black text-white rounded cursor-pointer flex items-center justify-between gap-[10px]"
+              >
+                Close <X />
+              </motion.button>
+            </div>
+          </div>
+          <Toaster richColors />
+        </div>
+      )}
+
+      <div className="flex flex-col gap-[15px] p-[30px]">
+        {Array.isArray(value) && value.map((val, index) => (
+          <div key={index} className="bg-accent rounded-[7px] p-[15px] flex items-center justify-between mr-[15px] w-full">
+            <div className="flex flex-col gap-[8px] w-[90%] overflow-hidden text-justify">
+              <p>The Form link: {val.formlink}</p>
+            </div>
+            <motion.div whileTap={{ scale: 0.70 }}
+              onClick={() => {
+                if (deleteData("formlink", val.id)) {
+                  toast.success("Data deleted successfully!");
+                }
+              }} className="mr-[25px] text-red-600 cursor-pointer hover:bg-red-200 p-[5px] rounded-[2px] transition-all duration-200">
+              <Trash2 />
+            </motion.div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 function Main() {
 
   const [page, setPage] = useState();
@@ -596,7 +677,7 @@ function Main() {
   return (
     <div className="flex flex-row transition-all duration-300">
       <div className="h-screen w-[300px] bg-gray-200 p-[40px] gap-[15px]">
-        <motion.p whileTap={{ scale: 0.95 }} id="admin-01" onClick={() => { setClicked((pre) => (!pre)); document.getElementById("admin-01").style.backgroundColor = "white"; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px] flex flex-row items-center justify-between">Products {!clicked ? <ChevronDown /> : <ChevronUp />}</motion.p>
+        <motion.p whileTap={{ scale: 0.95 }} id="admin-01" onClick={() => { setClicked((pre) => (!pre)); document.getElementById("admin-01").style.backgroundColor = "white"; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = ""; document.getElementById("admin-04").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px] flex flex-row items-center justify-between">Products {!clicked ? <ChevronDown /> : <ChevronUp />}</motion.p>
         {clicked &&
           <div className="flex flex-col gap-[10px] ml-[15px] my-[10px]">
             <motion.p whileTap={{ scale: 0.95 }} onClick={() => setPage(<Healthcare />)} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Healthcare</motion.p>
@@ -604,8 +685,9 @@ function Main() {
             <motion.p whileTap={{ scale: 0.95 }} onClick={() => setPage(<Logistics />)} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Logistics</motion.p>
           </div>
         }
-        <motion.p whileTap={{ scale: 0.95 }} id="admin-02" onClick={() => { setPage(<CasestudiesData />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = "white"; document.getElementById("admin-03").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Case Studies</motion.p>
-        <motion.p whileTap={{ scale: 0.95 }} id="admin-03" onClick={() => { setPage(<GetEmail />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = "white"; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Contact Request</motion.p>
+        <motion.p whileTap={{ scale: 0.95 }} id="admin-02" onClick={() => { setPage(<CasestudiesData />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = "white"; document.getElementById("admin-03").style.backgroundColor = ""; document.getElementById("admin-04").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Case Studies</motion.p>
+        <motion.p whileTap={{ scale: 0.95 }} id="admin-03" onClick={() => { setPage(<GetEmail />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = "white"; document.getElementById("admin-04").style.backgroundColor = ""; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Contact Request</motion.p>
+        <motion.p whileTap={{ scale: 0.95 }} id="admin-04" onClick={() => { setPage(<FormPage />); document.getElementById("admin-01").style.backgroundColor = ""; document.getElementById("admin-02").style.backgroundColor = ""; document.getElementById("admin-03").style.backgroundColor = ""; document.getElementById("admin-04").style.backgroundColor = "white"; }} className="cursor-pointer hover:bg-accent px-[5px] py-[7px] rounded-[4px]">Form Link</motion.p>
       </div>
       <div className="w-full">
         {page}
