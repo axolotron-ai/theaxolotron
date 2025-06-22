@@ -6,12 +6,14 @@ import Performance from "@/components/academy/Performance";
 import Vision from "@/components/academy/Vision";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import OfflineClasses from "@/components/OfflineClasses";
 
 export default function page() {
     return (
         <>
             <Header />
             <Hero />
+            <OfflineClasses />
             <Performance />
             <Vision />
             <Levels />

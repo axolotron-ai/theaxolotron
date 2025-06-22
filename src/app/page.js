@@ -7,6 +7,7 @@ import Casestudies from "@/components/Casestudies";
 import Team from "@/components/Team";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import OfflineClasses from "@/components/OfflineClasses";
 
 export default function Home() {
 
@@ -14,6 +15,7 @@ export default function Home() {
         <>
             <Header />
             <Hero />
+            <OfflineClasses />
             <Performance />
             <Products />
             <Casestudies />
