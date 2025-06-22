@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { Drawer } from "@mui/material";
 
 const museo = MuseoModerno({ subsets: ["latin"] });
-const oswald = Oswald({ subsets: ["latin"] });
 
 export default function Header() {
     const [mounted, setMounted] = useState(false);
@@ -26,8 +25,8 @@ export default function Header() {
             <div className="lg:block hidden">
                 <div className={`${museo.className} flex text-white gap-[15px] md:gap-[40px] items-center text-[18px]`}>
                     <p onClick={() => document.getElementById("home").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200">Home</p>
-                    <p onClick={() => document.getElementById("products").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200">Products</p>
-                    <p onClick={() => document.getElementById("casestudies").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[120px]">Case Studies</p>
+                    <p onClick={() => document.getElementById("academiclevels").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[150px]">Academic Levels</p>
+                    <p onClick={() => document.getElementById("outcomes").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[60px]">Outcomes</p>
                     <motion.button onClick={() => document.getElementById("contact").scrollIntoView({ behavior: "smooth" })} whileTap={{ scale: 0.97 }} className="bg-white text-black rounded-full px-[12px] py-[7px] cursor-pointer shadow-inner min-w-[200px]">Free Consultation</motion.button>
                 </div>
             </div>

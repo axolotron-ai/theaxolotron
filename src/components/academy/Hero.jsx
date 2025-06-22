@@ -27,14 +27,14 @@ export default function Hero() {
                 </div>
                 <div className="grid grid-cols-1 grid-rows-2 sm:grid-cols-3 px-[10%] mt-[80px]">
                     <div className="sm:flex sm:flex-col sm:gap-[25px]">
-                        <p className="hidden sm:block font-semibold text-[21px]">Lorem ipsum vestibulum tortor eget tortor id adipiscing donec commodo aliquam nunc ac fermentum neque eu pellentesque quis tristique erat augue</p>
+                        <p className="hidden sm:block font-semibold text-[21px]">To make world-class AI education accessible, practical, and transformative — so every learner is not just trained, but truly prepared for the future of work. <br /><span>We don't create certificate holders. We build confident, job-ready AI professionals.</span></p>
                         <div className="block sm:hidden">
                             <div className="w-full flex items-center justify-center">
                                 <p className="outline-1 outline-black cursor-pointer w-fit px-[20px] py-[10px] rounded-[7px] font-semibold text-[18px]">Explore</p>
                             </div>
                         </div>
                         <div className="hidden sm:block">
-                            <p className="outline-1 outline-black cursor-pointer w-fit px-[20px] py-[10px] rounded-[7px] font-semibold text-[18px]">Explore</p>
+                            <p onClick={() => document.getElementById("contact").scrollIntoView({ behavior: "smooth" })} className="outline-1 outline-black cursor-pointer w-fit px-[20px] py-[10px] rounded-[7px] font-semibold text-[18px]">Explore</p>
                         </div>
                     </div>
                     <Image src="/academy_man.png" alt="/reload" height={400} width={350} quality={100} className="sm:ml-[100px] mt-[-120px] sm:mt-0" />
