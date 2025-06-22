@@ -6,6 +6,7 @@ import { ArrowDown, X } from "lucide-react";
 import { getData } from "@/firebase/firestoreService";
 import { useEffect, useState } from "react";
 import truncateByWords from "@/utils/truncateByWords";
+import { Dialog, DialogTrigger, DialogContent } from "./ui/dialog";
 
 const lato = Lato({
     subsets: ['latin'],
@@ -82,10 +83,9 @@ export default function Casestudies() {
                         )
                     }
                 </div>
-                {
-                    isOpen && activeSet &&
-                    <div className="fixed h-screen w-screen inset-0 top-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-6 overflow-y-scroll">
-                        <div className="bg-grid-inch text-black p-6 rounded-xl w-full mt-[570px] flex flex-col">
+                {isOpen && activeSet &&
+                    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                        <DialogContent className="h-screen min-w-screen bg-grid-inch text-black p-6 rounded-xl flex flex-col overflow-y-scroll">
                             <button
                                 className="flex items-center justify-end text-white text-xl cursor-pointer"
                                 onClick={() => {
@@ -111,8 +111,8 @@ export default function Casestudies() {
                                     <a href="/blog" className="bg-white text-black px-[15px] py-[10px] font-semibold cursor-pointer rounded-[5px] mt-[40px] w-fit">More Blogs</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </DialogContent>
+                    </Dialog>
                 }
 
                 <a href="/blog" className="flex items-center justify-center py-[60px] bg-gradient-to-t from-black via-transparent to-transparent">

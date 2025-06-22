@@ -10,8 +10,8 @@ import truncateByWords from "@/utils/truncateByWords";
 export default function Products() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const value = [{ name: "Healthcare", srcVideo: "/healthcare_vdo.mp4", srcPic: "/healthcare.jpg", link: "/products/healthcare" },
-    { name: "Ecommerce", srcVideo: "/ecommerce_vdo.mp4", srcPic: "/ecommerce.jpg" },
-    { name: "Logistics", srcVideo: "/logistics_vdo.mp4", srcPic: "/logistics.jpg" }];
+    { name: "Ecommerce", srcVideo: "/ecommerce_vdo.mp4", srcPic: "/ecommerce.jpg", link: "/products/ecommerce" },
+    { name: "Logistics", srcVideo: "/logistics_vdo.mp4", srcPic: "/logistics.jpg", link: "/products/logistics" }];
 
     useEffect(() => {
         async function fetchData() {
@@ -127,7 +127,7 @@ export default function Products() {
                                             className="object-cover h-auto w-auto"
                                         />
                                         <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/70 to-transparent">
-                                            <p className="text-white flex items-center justify-between p-[10px] font-semibold text-[20px]">AI for {truncateByWords(val?.name, 1)} <MoveRight className="text-black bg-white rounded-full h-[40px] w-[40px] p-[6px]" /></p>
+                                            <a href={val?.link}><p className="text-white flex items-center justify-between p-[10px] font-semibold text-[20px]">AI for {truncateByWords(val?.name, 1)} <MoveRight className="text-black bg-white rounded-full h-[40px] w-[40px] p-[6px]" /></p></a>
                                         </div>
                                     </motion.div>
                                 </div>

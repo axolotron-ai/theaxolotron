@@ -223,9 +223,24 @@ function Healthcare() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [improvement_1, setImprovement_1] = useState("");
-  const [improvement_2, setImprovement_2] = useState("");
-  const [benefits, setBenefits] = useState(0);
+  const [isFor1, setIsFor1] = useState("");
+  const [isFor2, setIsFor2] = useState("");
+  const [isFor3, setIsFor3] = useState("");
+  const [isFor4, setIsFor4] = useState("");
+  const [isFor5, setIsFor5] = useState("");
+  const [isFor6, setIsFor6] = useState("");
+  const [benefits1, setBenefits1] = useState("");
+  const [benefits2, setBenefits2] = useState("");
+  const [benefits3, setBenefits3] = useState("");
+  const [benefits4, setBenefits4] = useState("");
+  const [benefits5, setBenefits5] = useState("");
+  const [benefits6, setBenefits6] = useState("");
+  const [integration1, setIntegration1] = useState("");
+  const [integration2, setIntegration2] = useState("");
+  const [integration3, setIntegration3] = useState("");
+  const [integration4, setIntegration4] = useState("");
+  const [integration5, setIntegration5] = useState("");
+  const [integration6, setIntegration6] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -236,12 +251,6 @@ function Healthcare() {
       fetchData();
     }, 100);
   }, []);
-
-  const InputReturn = (nos) => {
-    for (let i = 0; i < nos.length; i++) {
-      return (<input placeholder={nos} />);
-    }
-  }
 
   return (
     <div className="transition-all duration-300">
@@ -258,7 +267,7 @@ function Healthcare() {
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1">
+          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1 max-h-screen overflow-y-scroll">
             <h2 className="text-xl font-semibold mb-2">Post</h2>
             <div className="flex flex-col gap-[10px]">
               <p>Title <span className="text-red-500">*</span></p>
@@ -273,27 +282,55 @@ function Healthcare() {
               <input placeholder="Image Link" onChange={(e) => setImage(e.target.value)} className="outline-none border-b-1" />
             </div>
             <div>
-              <div className="flex flex-row items-center justify-between">
-                <p>Key Benefits  <span className="text-red-500">*</span></p>
-                <p className="cursor-pointer" onClick={() => setBenefits((val) => (val + 1))}><Plus /></p>
+              <div className="flex flex-row items-center justify-between mb-[10px]">
+                <p>Who is this for  <span className="text-red-500">*</span></p>
               </div>
-              <div>
-                <input />
-                <input />
-                <input />
-                <input />
-                <input />
-                <input />
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setIsFor1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setIsFor2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setIsFor3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setIsFor4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setIsFor5(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setIsFor6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+              </div>
+            </div>
+            <div>
+              <div className="flex flex-row items-center justify-between mb-[15px]">
+                <p>Key Benefits  <span className="text-red-500">*</span></p>
+              </div>
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setBenefits1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setBenefits2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setBenefits3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setBenefits4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setBenefits4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setBenefits6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+              </div>
+            </div>
+            <div>
+              <div className="flex flex-row items-center justify-between mb-[15px]">
+                <p>Key Benefits  <span className="text-red-500">*</span></p>
+              </div>
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setIntegration1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setIntegration2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setIntegration3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setIntegration4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setIntegration5(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setIntegration6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
               </div>
             </div>
             <div className="flex flex-row gap-[15px]">
               <motion.button whileTap={{ scale: 0.95 }}
                 onClick={() => {
-                  if (!title || !description || !image || !improvement_1 || !improvement_2) {
+                  const isForList = { isFor1, isFor2, isFor3, isFor3, isFor5, isFor5, isFor6 };
+                  const benefitsList = { benefits1, benefits2, benefits3, benefits4, benefits5, benefits6 };
+                  const integrationList = { integration1, integration2, integration3, integration4, integration5, integration6 };
+                  if (!title || !description || !image || !isFor1 || !benefits1 || !integration1) {
                     toast.info("Enter all the fields!");
                   }
                   else {
-                    addData("casestudies", { title, description, image, improvement_1, improvement_2 });
+                    addData("healthcare", { title, description, image, isForList, benefitsList, integrationList });
                     setIsOpen(false);
                     toast.success("Data added successfully!");
                   }
@@ -317,12 +354,31 @@ function Healthcare() {
               <p>Title:{val.title}</p>
               <p>Description: {val.description}</p>
               <p>Source Image: {val.image}</p>
-              <p>Improvement 1: {val.improvement_1}</p>
-              <p>Improvement 2: {val.improvement_2}</p>
+              <p>Who is this for</p>
+              <p>{val?.isForList?.isFor1}</p>
+              <p>{val?.isForList?.isFor2}</p>
+              <p>{val?.isForList?.isFor3}</p>
+              <p>{val?.isForList?.isFor4}</p>
+              <p>{val?.isForList?.isFor5}</p>
+              <p>{val?.isForList?.isFor6}</p>
+              <p>Key Benefits</p>
+              <p>{val?.benefitsList?.benefits1}</p>
+              <p>{val?.benefitsList?.benefits2}</p>
+              <p>{val?.benefitsList?.benefits3}</p>
+              <p>{val?.benefitsList?.benefits4}</p>
+              <p>{val?.benefitsList?.benefits5}</p>
+              <p>{val?.benefitsList?.benefits6}</p>
+              <p>Integration</p>
+              <p>{val?.integrationList?.integration1}</p>
+              <p>{val?.integrationList?.integration2}</p>
+              <p>{val?.integrationList?.integration3}</p>
+              <p>{val?.integrationList?.integration4}</p>
+              <p>{val?.integrationList?.integration4}</p>
+              <p>{val?.integrationList?.integration6}</p>
             </div>
             <motion.div whileTap={{ scale: 0.70 }}
               onClick={() => {
-                if (deleteData("casestudies", val.id)) {
+                if (deleteData("healthcare", val.id)) {
                   toast.success("Data deleted successfully!");
                 }
               }} className="mr-[25px] text-red-600 cursor-pointer hover:bg-red-200 p-[5px] rounded-[2px] transition-all duration-200">
@@ -341,8 +397,24 @@ function Ecommerce() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [improvement_1, setImprovement_1] = useState("");
-  const [improvement_2, setImprovement_2] = useState("");
+  const [isFor1, setIsFor1] = useState("");
+  const [isFor2, setIsFor2] = useState("");
+  const [isFor3, setIsFor3] = useState("");
+  const [isFor4, setIsFor4] = useState("");
+  const [isFor5, setIsFor5] = useState("");
+  const [isFor6, setIsFor6] = useState("");
+  const [benefits1, setBenefits1] = useState("");
+  const [benefits2, setBenefits2] = useState("");
+  const [benefits3, setBenefits3] = useState("");
+  const [benefits4, setBenefits4] = useState("");
+  const [benefits5, setBenefits5] = useState("");
+  const [benefits6, setBenefits6] = useState("");
+  const [integration1, setIntegration1] = useState("");
+  const [integration2, setIntegration2] = useState("");
+  const [integration3, setIntegration3] = useState("");
+  const [integration4, setIntegration4] = useState("");
+  const [integration5, setIntegration5] = useState("");
+  const [integration6, setIntegration6] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -369,7 +441,7 @@ function Ecommerce() {
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1">
+          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1 max-h-screen overflow-y-scroll">
             <h2 className="text-xl font-semibold mb-2">Post</h2>
             <div className="flex flex-col gap-[10px]">
               <p>Title <span className="text-red-500">*</span></p>
@@ -383,22 +455,56 @@ function Ecommerce() {
               <p>Image Link <span className="text-red-500">*</span></p>
               <input placeholder="Image Link" onChange={(e) => setImage(e.target.value)} className="outline-none border-b-1" />
             </div>
-            <div className="flex flex-col gap-[10px]">
-              <p>Improvement 1 <span className="text-red-500">*</span></p>
-              <input placeholder="Improvement 1" onChange={(e) => setImprovement_1(e.target.value)} className="outline-none border-b-1" />
+            <div>
+              <div className="flex flex-row items-center justify-between mb-[10px]">
+                <p>Who is this for  <span className="text-red-500">*</span></p>
+              </div>
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setIsFor1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setIsFor2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setIsFor3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setIsFor4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setIsFor5(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setIsFor6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+              </div>
             </div>
-            <div className="flex flex-col gap-[10px]">
-              <p>Improvement 2 <span className="text-red-500">*</span></p>
-              <input placeholder="Improvement 2" onChange={(e) => setImprovement_2(e.target.value)} className="outline-none border-b-1" />
+            <div>
+              <div className="flex flex-row items-center justify-between mb-[15px]">
+                <p>Key Benefits  <span className="text-red-500">*</span></p>
+              </div>
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setBenefits1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setBenefits2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setBenefits3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setBenefits4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setBenefits4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setBenefits6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+              </div>
+            </div>
+            <div>
+              <div className="flex flex-row items-center justify-between mb-[15px]">
+                <p>Key Benefits  <span className="text-red-500">*</span></p>
+              </div>
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setIntegration1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setIntegration2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setIntegration3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setIntegration4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setIntegration5(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setIntegration6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+              </div>
             </div>
             <div className="flex flex-row gap-[15px]">
               <motion.button whileTap={{ scale: 0.95 }}
                 onClick={() => {
-                  if (!title || !description || !image || !improvement_1 || !improvement_2) {
+                  const isForList = { isFor1, isFor2, isFor3, isFor3, isFor5, isFor5, isFor6 };
+                  const benefitsList = { benefits1, benefits2, benefits3, benefits4, benefits5, benefits6 };
+                  const integrationList = { integration1, integration2, integration3, integration4, integration5, integration6 };
+                  if (!title || !description || !image || !isFor1 || !benefits1 || !integration1) {
                     toast.info("Enter all the fields!");
                   }
                   else {
-                    addData("casestudies", { title, description, image, improvement_1, improvement_2 });
+                    addData("ecommerce", { title, description, image, isForList, benefitsList, integrationList });
                     setIsOpen(false);
                     toast.success("Data added successfully!");
                   }
@@ -422,12 +528,31 @@ function Ecommerce() {
               <p>Title:{val.title}</p>
               <p>Description: {val.description}</p>
               <p>Source Image: {val.image}</p>
-              <p>Improvement 1: {val.improvement_1}</p>
-              <p>Improvement 2: {val.improvement_2}</p>
+              <p>Who is this for</p>
+              <p>{val?.isForList?.isFor1}</p>
+              <p>{val?.isForList?.isFor2}</p>
+              <p>{val?.isForList?.isFor3}</p>
+              <p>{val?.isForList?.isFor4}</p>
+              <p>{val?.isForList?.isFor5}</p>
+              <p>{val?.isForList?.isFor6}</p>
+              <p>Key Benefits</p>
+              <p>{val?.benefitsList?.benefits1}</p>
+              <p>{val?.benefitsList?.benefits2}</p>
+              <p>{val?.benefitsList?.benefits3}</p>
+              <p>{val?.benefitsList?.benefits4}</p>
+              <p>{val?.benefitsList?.benefits5}</p>
+              <p>{val?.benefitsList?.benefits6}</p>
+              <p>Integration</p>
+              <p>{val?.integrationList?.integration1}</p>
+              <p>{val?.integrationList?.integration2}</p>
+              <p>{val?.integrationList?.integration3}</p>
+              <p>{val?.integrationList?.integration4}</p>
+              <p>{val?.integrationList?.integration4}</p>
+              <p>{val?.integrationList?.integration6}</p>
             </div>
             <motion.div whileTap={{ scale: 0.70 }}
               onClick={() => {
-                if (deleteData("casestudies", val.id)) {
+                if (deleteData("ecommerce", val.id)) {
                   toast.success("Data deleted successfully!");
                 }
               }} className="mr-[25px] text-red-600 cursor-pointer hover:bg-red-200 p-[5px] rounded-[2px] transition-all duration-200">
@@ -446,8 +571,24 @@ function Logistics() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [improvement_1, setImprovement_1] = useState("");
-  const [improvement_2, setImprovement_2] = useState("");
+  const [isFor1, setIsFor1] = useState("");
+  const [isFor2, setIsFor2] = useState("");
+  const [isFor3, setIsFor3] = useState("");
+  const [isFor4, setIsFor4] = useState("");
+  const [isFor5, setIsFor5] = useState("");
+  const [isFor6, setIsFor6] = useState("");
+  const [benefits1, setBenefits1] = useState("");
+  const [benefits2, setBenefits2] = useState("");
+  const [benefits3, setBenefits3] = useState("");
+  const [benefits4, setBenefits4] = useState("");
+  const [benefits5, setBenefits5] = useState("");
+  const [benefits6, setBenefits6] = useState("");
+  const [integration1, setIntegration1] = useState("");
+  const [integration2, setIntegration2] = useState("");
+  const [integration3, setIntegration3] = useState("");
+  const [integration4, setIntegration4] = useState("");
+  const [integration5, setIntegration5] = useState("");
+  const [integration6, setIntegration6] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -474,7 +615,7 @@ function Logistics() {
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-2xl bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1">
+          <div className="bg-white p-6 rounded shadow-xl w-[500px] flex flex-col gap-[20px] outline-1 max-h-screen overflow-y-scroll">
             <h2 className="text-xl font-semibold mb-2">Post</h2>
             <div className="flex flex-col gap-[10px]">
               <p>Title <span className="text-red-500">*</span></p>
@@ -488,22 +629,56 @@ function Logistics() {
               <p>Image Link <span className="text-red-500">*</span></p>
               <input placeholder="Image Link" onChange={(e) => setImage(e.target.value)} className="outline-none border-b-1" />
             </div>
-            <div className="flex flex-col gap-[10px]">
-              <p>Improvement 1 <span className="text-red-500">*</span></p>
-              <input placeholder="Improvement 1" onChange={(e) => setImprovement_1(e.target.value)} className="outline-none border-b-1" />
+            <div>
+              <div className="flex flex-row items-center justify-between mb-[10px]">
+                <p>Who is this for  <span className="text-red-500">*</span></p>
+              </div>
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setIsFor1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setIsFor2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setIsFor3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setIsFor4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setIsFor5(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setIsFor6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+              </div>
             </div>
-            <div className="flex flex-col gap-[10px]">
-              <p>Improvement 2 <span className="text-red-500">*</span></p>
-              <input placeholder="Improvement 2" onChange={(e) => setImprovement_2(e.target.value)} className="outline-none border-b-1" />
+            <div>
+              <div className="flex flex-row items-center justify-between mb-[15px]">
+                <p>Key Benefits  <span className="text-red-500">*</span></p>
+              </div>
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setBenefits1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setBenefits2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setBenefits3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setBenefits4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setBenefits4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setBenefits6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+              </div>
+            </div>
+            <div>
+              <div className="flex flex-row items-center justify-between mb-[15px]">
+                <p>Key Benefits  <span className="text-red-500">*</span></p>
+              </div>
+              <div className="flex flex-col gap-[15px]">
+                <input placeholder="Statement 1" onChange={(e) => setIntegration1(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 2" onChange={(e) => setIntegration2(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 3" onChange={(e) => setIntegration3(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 4" onChange={(e) => setIntegration4(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 5" onChange={(e) => setIntegration5(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+                <input placeholder="Statement 6" onChange={(e) => setIntegration6(e.target.value)} className="outline-none border-b-2 border-black/50 p-[2px]" />
+              </div>
             </div>
             <div className="flex flex-row gap-[15px]">
               <motion.button whileTap={{ scale: 0.95 }}
                 onClick={() => {
-                  if (!title || !description || !image || !improvement_1 || !improvement_2) {
+                  const isForList = { isFor1, isFor2, isFor3, isFor3, isFor5, isFor5, isFor6 };
+                  const benefitsList = { benefits1, benefits2, benefits3, benefits4, benefits5, benefits6 };
+                  const integrationList = { integration1, integration2, integration3, integration4, integration5, integration6 };
+                  if (!title || !description || !image || !isFor1 || !benefits1 || !integration1) {
                     toast.info("Enter all the fields!");
                   }
                   else {
-                    addData("casestudies", { title, description, image, improvement_1, improvement_2 });
+                    addData("logistics", { title, description, image, isForList, benefitsList, integrationList });
                     setIsOpen(false);
                     toast.success("Data added successfully!");
                   }
@@ -527,12 +702,31 @@ function Logistics() {
               <p>Title:{val.title}</p>
               <p>Description: {val.description}</p>
               <p>Source Image: {val.image}</p>
-              <p>Improvement 1: {val.improvement_1}</p>
-              <p>Improvement 2: {val.improvement_2}</p>
+              <p>Who is this for</p>
+              <p>{val?.isForList?.isFor1}</p>
+              <p>{val?.isForList?.isFor2}</p>
+              <p>{val?.isForList?.isFor3}</p>
+              <p>{val?.isForList?.isFor4}</p>
+              <p>{val?.isForList?.isFor5}</p>
+              <p>{val?.isForList?.isFor6}</p>
+              <p>Key Benefits</p>
+              <p>{val?.benefitsList?.benefits1}</p>
+              <p>{val?.benefitsList?.benefits2}</p>
+              <p>{val?.benefitsList?.benefits3}</p>
+              <p>{val?.benefitsList?.benefits4}</p>
+              <p>{val?.benefitsList?.benefits5}</p>
+              <p>{val?.benefitsList?.benefits6}</p>
+              <p>Integration</p>
+              <p>{val?.integrationList?.integration1}</p>
+              <p>{val?.integrationList?.integration2}</p>
+              <p>{val?.integrationList?.integration3}</p>
+              <p>{val?.integrationList?.integration4}</p>
+              <p>{val?.integrationList?.integration4}</p>
+              <p>{val?.integrationList?.integration6}</p>
             </div>
             <motion.div whileTap={{ scale: 0.70 }}
               onClick={() => {
-                if (deleteData("casestudies", val.id)) {
+                if (deleteData("logistics", val.id)) {
                   toast.success("Data deleted successfully!");
                 }
               }} className="mr-[25px] text-red-600 cursor-pointer hover:bg-red-200 p-[5px] rounded-[2px] transition-all duration-200">

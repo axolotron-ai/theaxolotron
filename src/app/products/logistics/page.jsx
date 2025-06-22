@@ -15,7 +15,7 @@ export default function page() {
     useEffect(() => {
         const interval = setInterval(() => {
             async function fetchData() {
-                const data = await getData("healthcare");
+                const data = await getData("logistics");
                 setValue(data);
             }
             fetchData();
@@ -25,7 +25,7 @@ export default function page() {
     return (
         <>
             <div className="bg-black/85 min-h-screen px-[clamp(2rem,2.5vw,3rem)]">
-                <p className="text-white text-[clamp(1.25rem,2vw,2.25rem)] font-semibold py-[50px]">Healthcare</p>
+                <p className="text-white text-[clamp(1.25rem,2vw,2.25rem)] font-semibold py-[50px]">Logistics</p>
                 <div className="flex flex-wrap gap-[40px]">
                     {Array.isArray(value) && value.map((val, index) => (
                         <div key={index} onClick={() => { setActiveSet(val); setIsOpen(true); }} className="flex flex-col gap-[15px] cursor-pointer hover:outline-1 hover:outline-white/50 hover:rounded-[7px] p-[10px]">

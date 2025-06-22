@@ -6,6 +6,7 @@ import { ArrowDown, X } from "lucide-react";
 import { getData } from "@/firebase/firestoreService";
 import { useEffect, useState } from "react";
 import truncateByWords from "@/utils/truncateByWords";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const lato = Lato({
     subsets: ['latin'],
@@ -45,7 +46,7 @@ export default function CasestudiesPage() {
                 <div className="mx-[clamp(1.5rem,7vw,11rem)] py-[40px]">
                     <p className={`${prompt.className} text-[clamp(1rem,2vw,3rem)]`}>Recent blog posts</p>
                 </div>
-                <div className="mx-[clamp(1.5rem,8vw,11rem)] grid grid-cols-3">
+                <div className="mx-[clamp(1.5rem,8vw,11rem)] flex flex-wrap items-center justify-evenly">
                     {
                         Array.isArray(value) &&
                         value.map((val, index) => (
@@ -58,12 +59,11 @@ export default function CasestudiesPage() {
                         )
                     }
                 </div>
-                {
-                    isOpen && activeSet &&
-                    <div key={activeSet?.id} className="fixed h-screen w-screen inset-0 top-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-6 overflow-y-scroll">
-                        <div className="bg-grid-inch text-white p-6 rounded-xl w-full mt-[570px] flex flex-col">
+                {isOpen && activeSet &&
+                    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                        <DialogContent className="h-screen min-w-screen bg-grid-inch text-black p-6 rounded-xl flex flex-col overflow-y-scroll">
                             <button
-                                className="flex items-center justify-end text-white text-xl cursor-pointer"
+                                className="flex items-center justify-end text-white text-xl cursor-pointer border-none outline-none"
                                 onClick={() => {
                                     setIsOpen(false);
                                     setActiveSet(null);
@@ -87,8 +87,8 @@ export default function CasestudiesPage() {
                                     <a href="/blog" className="bg-white text-black px-[15px] py-[10px] font-semibold cursor-pointer rounded-[5px] mt-[40px] w-fit">More Blogs</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </DialogContent>
+                    </Dialog>
                 }
             </div>
         </>
