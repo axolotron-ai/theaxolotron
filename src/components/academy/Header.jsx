@@ -23,9 +23,10 @@ export default function Header() {
         <div className="flex items-center justify-between p-[20px] bg-black/30 w-[85%] mx-auto fixed inset-0 z-50 h-[55px] md:h-[60px] rounded-full top-[35px] backdrop-blur-3xl">
             <a href="/" className="w-full flex items-center justify-start"><Image src="/axolotron-logo.png" alt="axolotron-logo" height={50} width={50} quality={100} className="h-[16px] w-[150px]" /></a>
             <div className="lg:block hidden">
-                <div className={`${museo.className} flex text-white gap-[15px] md:gap-[30px] items-center text-[18px]`}>
-                    <p onClick={() => document.getElementById("home").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200">Home</p>
+                <div className={`${museo.className} flex text-white gap-[15px] md:gap-[20px] items-center text-[18px]`}>
+                    <p onClick={() => document.getElementById("home").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[70px]">Home</p>
                     <p onClick={() => document.getElementById("elite").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[140px]">Elite AI Course</p>
+                    <p onClick={() => document.getElementById("ourprograms").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[90px]">Programs</p>
                     <p onClick={() => document.getElementById("outcomes").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[50px]">Outcomes</p>
                     <motion.button onClick={() => document.getElementById("contact").scrollIntoView({ behavior: "smooth" })} whileTap={{ scale: 0.97 }} className="bg-white text-black rounded-full px-[12px] py-[7px] cursor-pointer shadow-inner min-w-[200px]">Free Consultation</motion.button>
                 </div>
@@ -38,6 +39,7 @@ export default function Header() {
                         <div className={`${museo.className} flex text-white gap-[20px] flex-col text-[18px] bg-[#151515] h-full p-[20px]`}>
                             <p onClick={() => { document.getElementById("home").scrollIntoView({ behavior: "smooth" }); setDrawerAction(false); }} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200">Home</p>
                             <p onClick={() => { document.getElementById("elite").scrollIntoView({ behavior: "smooth" }); setDrawerAction(false); }} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200">Elite AI Course</p>
+                            <p onClick={() => { document.getElementById("ourprograms").scrollIntoView({ behavior: "smooth" }); setDrawerAction(false); }} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200">Programs</p>
                             <p onClick={() => { document.getElementById("outcomes").scrollIntoView({ behavior: "smooth" }); setDrawerAction(false); }} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[120px]">Outcomes</p>
                             <motion.button onClick={() => { document.getElementById("contact").scrollIntoView({ behavior: "smooth" }); setDrawerAction(false); }} whileTap={{ scale: 0.97 }} className="bg-white text-black rounded-full px-[12px] py-[7px] cursor-pointer shadow-inner min-w-[200px]">Free Consultation</motion.button>
                         </div>
