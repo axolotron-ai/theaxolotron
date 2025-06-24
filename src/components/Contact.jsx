@@ -1,9 +1,9 @@
 "use client";
 import { Prompt } from "next/font/google";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { addData, getData } from "@/firebase/firestoreService";
+import { addData } from "@/firebase/firestoreService";
 import { toast, Toaster } from "sonner";
+import MotionButton from "./MotionButton";
 
 const prompt = Prompt({
     subsets: ['latin'],
@@ -19,23 +19,21 @@ export default function Contact() {
     const [cno, setCno] = useState("");
     const [link, setLink] = useState("");
 
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
+    if (!mounted) return null;
+
     const whenClicked = () => {
         if (!name || !orgName || !email || !cno) {
             toast.info("Enter all the fields!");
         } else {
             addData("contacts", { name, orgName, email, cno });
             toast.success("Query Sent Successfully!");
-            document.getElementById("input_01").value = "";
-            document.getElementById("input_02").value = "";
-            document.getElementById("input_03").value = "";
-            document.getElementById("input_04").value = "";
+            setName("");
+            setOrgName("");
+            setEmail("");
+            setCno("");
         }
-    };
-
-    const motionButton = (children) => {
-        return (
-            <motion.button whileTap={{ scale: 0.95 }} onClick={() => whenClicked()} className="bg-white px-[50px] py-[8px] rounded-[5px] cursor-pointer w-fit text-black">{children}</motion.button>
-        );
     };
 
     return (
@@ -47,11 +45,11 @@ export default function Contact() {
                 </div>
 
                 <div className="flex flex-col gap-[40px] sm:px-[40px]">
-                    <input id="input_01" placeholder="Name" onChange={(e) => setName(e.target.value)} className="outline-none border-b-2 border-white/40" />
-                    <input id="input_02" placeholder="Organization Name" onChange={(e) => setOrgName(e.target.value)} className="outline-none border-b-2 border-white/40" />
-                    <input id="input_04" placeholder="Contact No" onChange={(e) => setCno(e.target.value)} className="outline-none border-b-2 border-white/40" />
-                    <input id="input_03" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} className="outline-none border-b-2 border-white/40" />
-                    {motionButton("Send")}
+                    <input id="input_01" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <input id="input_02" placeholder="Organization Name" value={orgName} onChange={(e) => setOrgName(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <input id="input_04" placeholder="Contact No" value={cno} onChange={(e) => setCno(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <input id="input_03" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} className="outline-none border-b-2 border-white/40" />
+                    <MotionButton onClick={whenClicked} children="send" />
                 </div>
             </div>
             <div className="sm:h-[600px] w-[1px] bg-white/40" />
