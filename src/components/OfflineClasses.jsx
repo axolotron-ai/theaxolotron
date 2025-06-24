@@ -25,7 +25,7 @@ export default function OfflineClasses() {
 
     return (
         <>
-            <div className="bg-black px-[8%] h-full py-[50px]">
+            <div id="elite" className="bg-black px-[8%] h-full py-[50px]">
                 <p className="text-white font-semibold text-[clamp(2.25rem,2.75vw,3rem)]">Axolotron's Elite AI course</p>
                 <div className="grid grid-rows-2 sm:grid-rows-1 sm:grid-cols-2 items-center justify-between">
                     <div className="w-full h-full flex flex-col items-center justify-evenly gap-[20px]">

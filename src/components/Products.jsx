@@ -10,8 +10,8 @@ import truncateByWords from "@/utils/truncateByWords";
 export default function Products() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const value = [{ name: "Healthcare", srcVideo: "/healthcare_vdo.mp4", srcPic: "/healthcare.jpg", link: "/products/healthcare" },
-    { name: "Ecommerce", srcVideo: "/ecommerce_vdo.mp4", srcPic: "/ecommerce.jpg", link: "/products/ecommerce" },
-    { name: "Logistics", srcVideo: "/logistics_vdo.mp4", srcPic: "/logistics.jpg", link: "/products/logistics" }];
+    { name: "Ecommerce", srcVideo: "/ecommerce_new_vdo.mp4", srcPic: "/ecommerce.jpg", link: "/products/ecommerce" },
+    { name: "Corporate", srcVideo: "/corporate_vdo.mp4", srcPic: "/corporate.jpg", link: "/products/corporate" }];
 
     useEffect(() => {
         async function fetchData() {

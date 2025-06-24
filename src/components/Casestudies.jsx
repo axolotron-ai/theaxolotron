@@ -52,8 +52,7 @@ export default function Casestudies() {
                         value.map((val, index) => {
                             if (index == 0) {
                                 return (
-                                    <>
-                                        <div key={index} className="grid sm:grid-cols-2 gap-[3%] mb-[50px]">
+                                        <div key={index || val.id} className="grid sm:grid-cols-2 gap-[3%] mb-[50px]">
                                             <Image src={val?.image} alt="/reload" height={380} width={340} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,30rem)] w-full object-cover" />
                                             <div className="flex flex-col gap-[16px]">
                                                 <p className="text-[clamp(1rem,1.8vw,3rem)]">{truncateByWords(val.title, 10)}</p>
@@ -63,12 +62,11 @@ export default function Casestudies() {
                                                 <p onClick={() => { setIsOpen(true); setActiveSet(val); }}>{motionButton("Read more")}</p>
                                             </div>
                                         </div>
-                                    </>
                                 );
                             }
                             else if (index < 3) {
                                 return (
-                                    <div key={index} className="w-full sm:w-[50%] flex flex-col gap-[15px] mt-[20px]">
+                                    <div key={index || val.id} className="w-full sm:w-[50%] flex flex-col gap-[15px] mt-[20px]">
                                         <Image src={val?.image} alt="/reload" height={350} width={300} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(14rem,24vw,19rem)] w-[90%] object-cover" />
                                         <div className="flex flex-col gap-[16px] w-[90%]">
                                             <p className="text-[clamp(1rem,1.5vw,3rem)]">{truncateByWords(val.title, 10)}</p>
