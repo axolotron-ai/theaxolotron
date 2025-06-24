@@ -6,7 +6,7 @@ import { ArrowDown, X } from "lucide-react";
 import { getData } from "@/firebase/firestoreService";
 import { useEffect, useState } from "react";
 import truncateByWords from "@/utils/truncateByWords";
-import { Dialog, DialogTrigger, DialogContent } from "./ui/dialog";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "./ui/dialog";
 
 const lato = Lato({
     subsets: ['latin'],
@@ -52,16 +52,16 @@ export default function Casestudies() {
                         value.map((val, index) => {
                             if (index == 0) {
                                 return (
-                                        <div key={index || val.id} className="grid sm:grid-cols-2 gap-[3%] mb-[50px]">
-                                            <Image src={val?.image} alt="/reload" height={380} width={340} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,30rem)] w-full object-cover" />
-                                            <div className="flex flex-col gap-[16px]">
-                                                <p className="text-[clamp(1rem,1.8vw,3rem)]">{truncateByWords(val.title, 10)}</p>
-                                                <p className="text-[#939393] text-[clamp(0.8rem,1.25vw,2.5rem)]">{truncateByWords(val.description, 35)}</p>
-                                                <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit font-semibold">{truncateByWords(val.improvement_1, 10)}</p>
-                                                <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{truncateByWords(val.improvement_2, 10)}</p>
-                                                <p onClick={() => { setIsOpen(true); setActiveSet(val); }}>{motionButton("Read more")}</p>
-                                            </div>
+                                    <div key={index || val.id} className="grid sm:grid-cols-2 gap-[3%] mb-[50px]">
+                                        <Image src={val?.image} alt="/reload" height={380} width={340} quality={100} className="rounded-[7px] overflow-hidden h-[clamp(15rem,25vw,30rem)] w-full object-cover" />
+                                        <div className="flex flex-col gap-[16px]">
+                                            <p className="text-[clamp(1rem,1.8vw,3rem)]">{truncateByWords(val.title, 10)}</p>
+                                            <p className="text-[#939393] text-[clamp(0.8rem,1.25vw,2.5rem)]">{truncateByWords(val.description, 35)}</p>
+                                            <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit font-semibold">{truncateByWords(val.improvement_1, 10)}</p>
+                                            <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold">{truncateByWords(val.improvement_2, 10)}</p>
+                                            <p onClick={() => { setIsOpen(true); setActiveSet(val); }}>{motionButton("Read more")}</p>
                                         </div>
+                                    </div>
                                 );
                             }
                             else if (index < 3) {
@@ -94,7 +94,7 @@ export default function Casestudies() {
                                 <X />
                             </button>
                             <div>
-                                <h2 className="text-2xl font-bold mb-4 text-white">{activeSet.title}</h2>
+                                <DialogTitle className="text-2xl font-bold mb-4 text-white">{activeSet.title}</DialogTitle>
                                 <Image
                                     src={activeSet?.image}
                                     alt="case"
