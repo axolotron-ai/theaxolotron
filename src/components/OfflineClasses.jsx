@@ -20,7 +20,7 @@ export default function OfflineClasses() {
                 }
             }
             fetchData();
-        }, 10000);
+        }, 100);
     }, []);
 
     return (
