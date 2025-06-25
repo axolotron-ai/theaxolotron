@@ -6,7 +6,7 @@ export default function Outcomes() {
             </div>
             <div className="hidden sm:block">
                 <div className="flex flex-row gap-[1%]">
-                    <div className="flex flex-col gap-[50px] mx-[2%] w-[60%]">
+                    <div className="flex flex-col gap-[50px] sm:ml-[150px] mx-[2%] w-[60%]">
                         <div className="flex flex-row gap-[2%]">
                             <div className="w-[55%] outline-1 outline-black/40 rounded-[10px] bg-black">
                                 <p className="bg-black text-white p-[15px] rounded-t-[10px] text-[18px] font-semibold">Understanding AI Concepts</p>
@@ -24,7 +24,7 @@ export default function Outcomes() {
                             </div>
                             <div className="w-[65%] outline-1 outline-black/40 rounded-[10px]">
                                 <p className="bg-black text-white p-[15px] rounded-t-[10px] text-[18px] font-semibold">Boosted Productivity with AI</p>
-                                <p className="bg-[#DDDDDD] p-[15px] rounded-[10px] text-[18px] font-semibold min-h-[165px]">Get a clear introduction to Artificial Intelligence. what it is, how it works, and why it matters today. No technical background needed. Just real-world understanding of</p>
+                                <p className="bg-[#DDDDDD] p-[15px] rounded-[10px] text-[18px] font-semibold min-h-[192px]">Get a clear introduction to Artificial Intelligence. what it is, how it works, and why it matters today. No technical background needed. Just real-world understanding of</p>
                             </div>
                         </div>
                     </div>

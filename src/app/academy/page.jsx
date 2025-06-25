@@ -1,3 +1,4 @@
+import Gallery from "@/components/academy/Gallery";
 import Header from "@/components/academy/Header";
 import Hero from "@/components/academy/Hero";
 import Levels from "@/components/academy/Levels";
@@ -18,6 +19,7 @@ export default function page() {
             <Vision />
             <Levels />
             <Outcomes />
+            <Gallery />
             <Contact />
             <Footer />
         </>

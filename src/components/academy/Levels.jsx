@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export default function Levels() {
 
-    const value = [{ src: "/talks.jpg", name: "AI Talks" },
+    const value = [{ src: "/talks.jpg", name: "AI Talks", link: "/academy/talks" },
     { src: "/workshop.jpg", name: "AI Workshop" },
     { src: "/bootcamp.jpg", name: "AI Bootcamp" },
     { src: "/upskilling.jpg", name: "Corporate Upskilling" },
@@ -25,7 +25,7 @@ export default function Levels() {
                                         <p className="flex items-center justify-center text-[20px] mt-[15px] font-semibold">{val.name}</p>
                                     </div>
                                     <div className="flex items-center justify-center">
-                                        <button className="outline-1 outline-black cursor-pointer w-fit px-[20px] py-[10px] rounded-[7px] font-semibold text-[18px]">Explore</button>
+                                        <a href={val?.link}><button className="outline-1 outline-black cursor-pointer w-fit px-[20px] py-[10px] rounded-[7px] font-semibold text-[18px]">Explore</button></a>
                                     </div>
                                 </div>
                             ))
