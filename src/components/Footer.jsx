@@ -48,7 +48,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="bg-[#141414] pt-[20px] h-[70px] sm:h-[180px] w-full my-[-50px]">
-                <Image src="Axolotron.svg" alt="/reload" height={100} width={250} quality={100} className="h-full w-full object-fill" />
+                <Image src="/Axolotron.svg" alt="/reload" height={100} width={250} quality={100} className="h-full w-full object-fill" />
             </div>
         </>
     );
