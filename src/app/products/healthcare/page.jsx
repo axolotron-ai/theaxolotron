@@ -48,7 +48,7 @@ export default function page() {
                             <X />
                         </button>
                         <div>
-                            <div className="sm: mx-[100px]">
+                            <div className="sm:mx-[100px]">
                                 <DialogTitle className="text-2xl font-bold mb-4 text-white">{activeSet?.title}</DialogTitle>
                                 <Image
                                     src={activeSet?.image}
