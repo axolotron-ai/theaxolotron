@@ -1,3 +1,4 @@
+import Clients from "@/components/academy/Clients";
 import Gallery from "@/components/academy/Gallery";
 import Header from "@/components/academy/Header";
 import Hero from "@/components/academy/Hero";
@@ -20,6 +21,7 @@ export default function page() {
             <Levels />
             <Outcomes />
             <Gallery />
+            <Clients />
             <Contact />
             <Footer />
         </>

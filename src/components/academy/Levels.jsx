@@ -38,7 +38,7 @@ export default function Levels() {
                             value.map((val, index) => (
                                 <div key={index} className="relative flex flex-col gap-[20px]">
                                     <Image src={val.src} alt="/relaoad" height={200} width={200} className="relative h-[300px] w-[300px] object-cover outline-1 outline-black/60 rounded-[10px]" />
-                                    <div className="absolute bottom-0 bg-gradient-to-t text-white text-[20px] p-[10px] font-semibold from-black via-black/70 to-transparent flex items-center justify-between w-full">{val?.name} <ArrowRight className="text-black bg-white h-[40px] w-[40px] p-[10px] rounded-full" /></div>
+                                    <div className="absolute bottom-0 bg-gradient-to-t text-white text-[20px] p-[10px] font-semibold from-black via-black/70 to-transparent flex items-center justify-between w-full">{val?.name} <a href={val?.link}><ArrowRight className="text-black bg-white h-[40px] w-[40px] p-[10px] rounded-full" /></a></div>
                                 </div>
                             ))
                         }

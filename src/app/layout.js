@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Axolotron",
-  description: "IT Service Provider",
+  description: "IT Service Provider, Academy, Elite, IT, AI, Axolotron",
 };
 
 export default function RootLayout({ children }) {
