@@ -1,6 +1,7 @@
 "use client";
 import Clients from "@/components/academy/Clients";
 import ClientsB from "@/components/academy/ClientsB";
+import Footer from "@/components/Footer";
 import MotionButton from "@/components/MotionButton";
 import { oswald } from "@/utils/fonts";
 import { motion } from "framer-motion";
@@ -54,11 +55,12 @@ export default function page() {
                     </div>
                 </div>
 
-                <div className="py-[calc(4%)] flex items-center">
+                <div className="py-[calc(4%)] flex items-center justify-end">
                     <motion.button whileTap={{ scale: 0.95 }} className="px-[30px] py-[15px] bg-white text-black font-semibold rounded-[7px] cursor-pointer">Enquiry</motion.button>
                 </div>
             </div>
             <ClientsB />
+            <Footer />
         </>
     )
 };

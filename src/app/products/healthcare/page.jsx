@@ -49,18 +49,18 @@ export default function page() {
                         </button>
                         <div>
                             <div className="sm: mx-[100px]">
-                            <DialogTitle className="text-2xl font-bold mb-4 text-white">{activeSet?.title}</DialogTitle>
-                            <Image
-                                src={activeSet?.image}
-                                alt="case"
-                                height={200}
-                                width={380}
-                                className="rounded-md mb-4 object-cover w-[500px] h-[300px] mt-[40px]"
-                            />
-                            <p className="mb-6 text-white/60 flex text-justify my-[40px]">{activeSet.description}</p>
+                                <DialogTitle className="text-2xl font-bold mb-4 text-white">{activeSet?.title}</DialogTitle>
+                                <Image
+                                    src={activeSet?.image}
+                                    alt="case"
+                                    height={200}
+                                    width={380}
+                                    className="rounded-md mb-4 object-cover w-[500px] h-[300px] mt-[40px]"
+                                />
+                                <p className="mb-6 text-white/60 flex text-justify my-[40px]">{activeSet.description}</p>
                             </div>
                             <div>
-                                <p className="text-white font-semibold text-[clamp(1.5rem,2.25vw,3rem)] w-full text-center my-[30px]">Who is this for?</p>
+                                <p className="text-white font-semibold text-[clamp(1.5rem,2.25vw,3rem)] w-full text-center my-[30px]">What it does</p>
                                 <div className="flex flex-row items-center justify-evenly">
                                     <div className="sm:w-[30%] sm:flex sm:items-center sm:justify-center">
                                         <Anchor className="text-white h-[50px] w-[50px]" />

@@ -60,7 +60,7 @@ export default function page() {
                                 <p className="mb-6 text-white/60 flex text-justify my-[40px]">{activeSet.description}</p>
                             </div>
                             <div>
-                                <p className="text-white font-semibold text-[clamp(1.5rem,2.25vw,3rem)] w-full text-center my-[30px]">Who is this for?</p>
+                                <p className="text-white font-semibold text-[clamp(1.5rem,2.25vw,3rem)] w-full text-center my-[30px]">What it does</p>
                                 <div className="flex flex-row items-center justify-evenly">
                                     <div className="sm:w-[30%] sm:flex sm:items-center sm:justify-center">
                                         <Anchor className="text-white h-[50px] w-[50px]" />
