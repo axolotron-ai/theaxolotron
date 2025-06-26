@@ -4,9 +4,9 @@ import Image from "next/image"
 export default function Levels() {
 
     const value = [{ src: "/talks.jpg", name: "AI Talks", link: "/academy/talks" },
-    { src: "/workshop.jpg", name: "AI Workshop" },
-    { src: "/bootcamp.jpg", name: "AI Bootcamp" },
-    { src: "/upskilling.jpg", name: "Corporate Upskilling" },
+    { src: "/workshop.jpg", name: "AI Workshop", link: "academy/workshop" },
+    { src: "/bootcamp.jpg", name: "AI Bootcamp", link: "academy/bootcamp" },
+    { src: "/upskilling.jpg", name: "Corporate Upskilling", link: "academy/upskill" },
     ];
 
     return (

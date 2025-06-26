@@ -1,4 +1,3 @@
-import { Facebook } from "lucide-react";
 import { MuseoModerno } from "next/font/google";
 import Image from "next/image";
 
@@ -29,7 +28,7 @@ export default function Footer() {
                         <p className="text-[clamp(1rem,1.25vw,2rem)]">Products</p>
                         <p className="text-white/50">Healthcare</p>
                         <p className="text-white/50">E-commerce</p>
-                        <p className="text-white/50">Logistics</p>
+                        <p className="text-white/50">Corporate</p>
 
                         <a href="/academy" className="text-white/50 mt-[15px] underline">Academy</a>
                     </div>
