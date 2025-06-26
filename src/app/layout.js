@@ -21,6 +21,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/logo.jpg" />
+        <meta name="robots" content="index, follow" />
+        <meta name="description" content="Academy, IT, Axolotron, Solutions, Elite Course, AI, Corporate, Ecommerce, Healthcare, AI Talks, AI Workshop, AI Bootcamp, Corporate Upskilling, clients, case studies, contact us" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
