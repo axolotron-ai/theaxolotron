@@ -93,14 +93,14 @@ export default function Casestudies() {
                             >
                                 <X />
                             </button>
-                            <div>
+                            <div className="sm:px-[calc(15%)] px-[calc(5%)]">
                                 <DialogTitle className="text-2xl font-bold mb-4 text-white">{activeSet.title}</DialogTitle>
                                 <Image
                                     src={activeSet?.image}
                                     alt="case"
                                     height={200}
                                     width={380}
-                                    className="rounded-md mb-4 object-cover w-[500px] h-[300px] mt-[40px]"
+                                    className="rounded-md mb-4 object-cover w-full h-[400px] mt-[40px]"
                                 />
                                 <p className="mb-6 text-white/60 flex text-justify my-[40px]">{activeSet.description}</p>
                                 <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold mb-[20px]">{activeSet.improvement_1}</p>

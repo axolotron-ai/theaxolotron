@@ -30,9 +30,9 @@ export default function Products() {
     };
 
     return (
-        <div id="products" className="space-y-4 bg-black">
+        <div id="products" className="bg-black">
             <div className={`${lato.className} flex flex-col gap-[6px] pl-[10%] justify-start py-[50px]`}>
-                <p className="text-[clamp(1.5rem,2.5vw,3rem)] font-semibold text-white">Our products</p>
+                <p className="text-[clamp(1.8rem,2.5vw,3rem)] font-semibold text-white">Our products</p>
                 <p className="text-[#939393] text-[clamp(1.1rem,1.5vw,2rem)]">Redefining industries with the power of AI.</p>
             </div>
 

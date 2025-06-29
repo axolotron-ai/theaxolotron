@@ -21,7 +21,7 @@ export default function Gallery() {
                 <p className="text-[clamp(2rem,3vw,3.5rem)] font-semibold pb-[30px]">Gallery</p>
                 <p className="text-[clamp(1rem,1.2vw,2rem)] sm:w-[50%]">Explore snapshots from our AI training sessions — moments of learning, discovery, and transformation.</p>
             </div>
-            <div className="grid flex-col sm:grid-cols-3 sm:grid-rows-2 gap-[25px] pb-[70px]">
+            <div className="grid flex-col sm:grid-cols-3 gap-[25px] pb-[70px]">
                 {
                     Array.isArray(value) && value.map((val, index) => (
                         <div key={val.id || index} className="h-[300px] rounded-[7px] object-cover">

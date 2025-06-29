@@ -30,9 +30,8 @@ export default function OfflineClasses() {
                 <div className="grid grid-rows-2 sm:grid-rows-1 sm:grid-cols-2 items-center justify-between">
                     <div className="w-full h-full flex flex-col items-center justify-evenly gap-[20px]">
                         <p className="text-white/60 text-[clamp(1.25rem,1.5vw,1.75rem)]">A rigorously structured, mentor-led offline program crafted to develop high-caliber AI talent — through in-depth learning, real-world projects, and industry-grade training.</p>
-                        <div className="flex flex-row justify-evenly w-full">
+                        <div className="flex flex-row justify-center w-full">
                             <motion.button onClick={() => toggleDrawer(true)} className="px-[20px] py-[8px] bg-white text-black text-[18px] rounded-[7px] cursor-pointer">Learn More</motion.button>
-                            <a href={link} target="_blank"><motion.button whileTap={{ scale: 0.95 }} className="px-[20px] py-[8px] bg-white text-black text-[18px] rounded-[7px] cursor-pointer">Register Now</motion.button></a>
                         </div>
                     </div>
                     <div className="flex items-center justify-center">

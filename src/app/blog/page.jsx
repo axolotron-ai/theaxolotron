@@ -6,7 +6,7 @@ import { ArrowDown, X } from "lucide-react";
 import { getData } from "@/firebase/firestoreService";
 import { useEffect, useState } from "react";
 import truncateByWords from "@/utils/truncateByWords";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const lato = Lato({
     subsets: ['latin'],
@@ -34,19 +34,13 @@ export default function CasestudiesPage() {
         fetchData();
     }, []);
 
-    const motionButton = (children) => {
-        return (
-            <motion.button whileTap={{ scale: 0.95 }} className="bg-white px-[30px] text-black py-[8px] rounded-[7px] cursor-pointer w-fit mt-[5px] font-semibold">{children}</motion.button>
-        );
-    };
-
     return (
         <>
-            <div className={`${lato.className} bg-grid-inch min-h-screen text-white`}>
+            <div className={`${lato.className} bg-grid-inch min-h-screen text-white pb-[50px]`}>
                 <div className="mx-[clamp(1.5rem,7vw,11rem)] py-[40px]">
-                    <p className={`${prompt.className} text-[clamp(1rem,2vw,3rem)]`}>Recent blog posts</p>
+                    <p className={`${prompt.className} text-[clamp(1.5rem,2vw,3rem)]`}>Recent blog posts</p>
                 </div>
-                <div className="mx-[clamp(1.5rem,8vw,11rem)] flex flex-wrap items-center justify-evenly">
+                <div className="mx-[calc(10%)] flex flex-wrap items-center justify-evenly gap-[50px]">
                     {
                         Array.isArray(value) &&
                         value.map((val, index) => (
@@ -71,14 +65,14 @@ export default function CasestudiesPage() {
                             >
                                 <X />
                             </button>
-                            <div>
-                                <h2 className="text-2xl font-bold mb-4 text-white">{activeSet.title}</h2>
+                            <div className="sm:px-[calc(15%)] px-[calc(5%)]">
+                                <DialogTitle className="text-2xl font-bold mb-4 text-white">{activeSet.title}</DialogTitle>
                                 <Image
                                     src={activeSet?.image}
                                     alt="case"
                                     height={200}
                                     width={380}
-                                    className="rounded-md mb-4 object-cover w-[500px] h-[300px] mt-[40px]"
+                                    className="rounded-md mb-4 object-cover w-full h-[400px] mt-[40px]"
                                 />
                                 <p className="mb-6 text-white/60 flex text-justify my-[40px]">{activeSet.description}</p>
                                 <p className="px-[18px] py-[5px] text-black bg-[#89E856] outline-4 outline-[#4FB717] rounded-full w-fit mt-[5px] font-semibold mb-[20px]">{activeSet.improvement_1}</p>
