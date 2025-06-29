@@ -8,11 +8,13 @@ import Team from "@/components/Team";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import OfflineClasses from "@/components/OfflineClasses";
+import Chatbot from "@/components/Chatbot";
 
 export default function Home() {
 
     return (
         <>
+            <Chatbot />
             <Header />
             <Hero />
             <Performance />

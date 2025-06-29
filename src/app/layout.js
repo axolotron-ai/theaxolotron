@@ -1,34 +1,44 @@
-import { Geist, Geist_Mono } from "next/font/google";
+// app/layout.jsx
+"use client";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata = {
-  title: "Axolotron",
-  description: "IT Service Provider, Academy, Elite, IT, AI, Axolotron",
-};
+import Script from "next/script";
+import { useEffect } from "react";
 
 export default function RootLayout({ children }) {
+  useEffect(() => {
+    window.difyChatbotConfig = {
+      token: "VeBBFkR8ZEajooh9",
+      systemVariables: {},
+      userVariables: {},
+    };
+
+    const styleId = "dify-chatbot-style";
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement("style");
+      style.id = styleId;
+      style.innerHTML = `
+        #dify-chatbot-bubble-button {
+          background-color: #1C64F2 !important;
+        }
+        #dify-chatbot-bubble-window {
+          width: 24rem !important;
+          height: 40rem !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }, []);
+
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/logo.jpg" />
-        <meta name="robots" content="index, follow" />
-        <meta name="description" content="Academy, IT, Axolotron, Solutions, Elite Course, AI, Corporate, Ecommerce, Healthcare, AI Talks, AI Workshop, AI Bootcamp, Corporate Upskilling, clients, case studies, contact us" />
+        <Script
+          src="https://udify.app/embed.min.js"
+          id="VeBBFkR8ZEajooh9"
+          strategy="afterInteractive"
+        />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
