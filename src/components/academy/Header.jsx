@@ -21,7 +21,7 @@ export default function Header() {
 
     return (
         <div className="flex items-center justify-between p-[20px] bg-black/30 w-[85%] mx-auto fixed inset-0 z-50 h-[55px] md:h-[60px] rounded-full top-[35px] backdrop-blur-3xl">
-            <a href="/" className="w-full flex items-center justify-start"><Image src="/axolotron-logo.png" alt="axolotron-logo" height={50} width={50} quality={100} className="h-[16px] w-[150px]" /></a>
+            <a href="/" className="w-full flex items-center justify-start"><Image src="/Axolotron.png" alt="axolotron-logo" height={50} width={50} quality={100} className="h-[16px] w-[150px]" /></a>
             <div className="lg:block hidden">
                 <div className={`${museo.className} flex text-white gap-[15px] md:gap-[20px] items-center text-[18px]`}>
                     <p onClick={() => document.getElementById("home").scrollIntoView({ behavior: "smooth" })} className="cursor-pointer text-white/50 hover:text-white transition-all duration-200 min-w-[70px]">Home</p>
